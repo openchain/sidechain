@@ -9,20 +9,25 @@ namespace OpenChain.BitcoinGateway
 {
     public class PegGateway
     {
-        private readonly BitcoinExtKey key;
         private readonly BitcoinClient bitcoinClient;
+        private readonly OpenChainClient openChainClient;
 
-        public PegGateway(BitcoinExtKey key, BitcoinClient bitcoinClient)
+        public PegGateway(BitcoinClient bitcoinClient, OpenChainClient openChainClient)
         {
-            this.key = key;
-            this.bitcoinClient = bitcoinClient;    
+            this.bitcoinClient = bitcoinClient;
+            this.openChainClient = openChainClient;
         }
 
         public async Task GetBitcoinTransactions()
         {
             while (true)
             {
-                await 
+                IList<InboundTransaction> transactions = await this.bitcoinClient.GetUnspentOutputs();
+
+                foreach (InboundTransaction transaction in transactions)
+                {
+                    await openChainClient.AddAsset(transaction);
+                }
             }
         }
     }

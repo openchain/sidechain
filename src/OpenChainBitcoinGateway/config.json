@@ -1,0 +1,5 @@
+﻿{
+  "gateway_key": "92MgKrDxvG7q8RmsdL7bgJVMsr8MXam6Y7thrnoNjWXmvroxfup",
+  "bitcoin_api_url": "https://testnet.api.coinprism.com/v1/",
+  "openchain_server": "http://localhost:5000/"
+}

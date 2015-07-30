@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenChain.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="T:OpenChain.ITransactionStore">
+            <summary>
+            Represents a data store for key-value pairs.
+            </summary>
+        </member>
+        <member name="M:OpenChain.ITransactionStore.AddTransactions(System.Collections.Generic.IEnumerable{OpenChain.BinaryData})">
+            <summary>
+            Adds a transaction to the store.
+            </summary>
+            <param name="transactions">A collection of serialized <see cref="T:OpenChain.Transaction"/> to add to the store.</param>
+            <exception cref="T:OpenChain.ConcurrentMutationException">A record has been mutated and the transaction is no longer valid.</exception>
+            <returns>A task that represents the completion of the operation.</returns>
+        </member>
+        <member name="M:OpenChain.ITransactionStore.GetRecords(System.Collections.Generic.IEnumerable{OpenChain.BinaryData})">
+            <summary>
+            Gets the current records for a set of keys.
+            </summary>
+            <param name="keys">The keys to query.</param>
+            <returns>A task that represents the completion of the operation and contains a list of the corresponding <see cref="T:OpenChain.Record"/>.</returns>
+        </member>
+        <member name="M:OpenChain.ITransactionStore.GetLastTransaction">
+            <summary>
+            Gets the hash of the last transaction in the ledger.
+            </summary>
+            <returns>A task that represents the completion of the operation and contains the hash of the last transaction.</returns>
+        </member>
+        <member name="M:OpenChain.ITransactionStore.GetTransactionStream(OpenChain.BinaryData)">
+            <summary>
+            Gets the transactions following the one whose hash has been provided.
+            </summary>
+            <param name="from">The hash of the transaction to start streaming from.</param>
+            <returns>An observable representing the transaction stream.</returns>
+        </member>
+    </members>
+</doc>

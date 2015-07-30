@@ -26,6 +26,9 @@ namespace OpenChain.BitcoinGateway
         public async Task AddAsset(InboundTransaction transaction)
         {
             byte[] serializedMutation = await CreateTransaction(transaction);
+            if (serializedMutation == null)
+                return;
+
             byte[] hash = MessageSerializer.ComputeHash(serializedMutation);
 
             byte[] signature = openChainKey.Sign(new NBitcoin.uint256(hash)).ToDER();
@@ -58,14 +61,21 @@ namespace OpenChain.BitcoinGateway
             string toAddress = $"/p2pkh/{transaction.Address}";
 
             HttpClient client = new HttpClient();
+            BinaryData issuanceKey = new BinaryData(Encoding.UTF8.GetBytes($"{issuanceAccount}:ACC:{asset}"));
+            HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={issuanceKey.ToString()}"));
+            BinaryData issuanceVersion = BinaryData.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["version"]);
+
+            if (issuanceVersion.Value.Count != 0)
+                return null;
+
             BinaryData key = new BinaryData(Encoding.UTF8.GetBytes($"{toAddress}:ACC:{asset}"));
-            HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={key.ToString()}"));
+            getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={key.ToString()}"));
             JObject toAccount = JObject.Parse(await getValueResponse.Content.ReadAsStringAsync());
             BinaryData version = BinaryData.Parse((string)toAccount["version"]);
             long currentToBalance = BitConverter.ToInt64(BinaryData.Parse((string)toAccount["value"]).Value.Reverse().ToArray(), 0);
 
             records.Add(new Record(
-                key: new BinaryData(Encoding.UTF8.GetBytes($"{issuanceAccount}:ACC:{asset}")),
+                key: issuanceKey,
                 value: new BinaryData(BitConverter.GetBytes(-transaction.Amount).Reverse().ToArray()),
                 version: BinaryData.Empty));
 

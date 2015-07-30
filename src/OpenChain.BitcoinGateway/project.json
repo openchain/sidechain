@@ -9,25 +9,29 @@
   "dependencies": {
 
     "Microsoft.CSharp": "4.0.0-beta-23019",
-    "Microsoft.Framework.DependencyInjection": "1.0.0-beta5",
+    "Microsoft.Framework.DependencyInjection": "1.0.0-beta6",
     "Google.ProtocolBuffers": "2.4.1.555",
     "NBitcoin": "2.1.4.5",
     "Portable.BouncyCastle": "1.8.0-RC1",
     "Microsoft.Net.Http.Client": "1.0.0-beta6-10079",
     "Newtonsoft.Json": "7.0.1",
-    "OpenChain.Abstractions": "1.0.0-*"
+    "OpenChain.Abstractions": "1.0.0-*",
+    "Microsoft.Framework.Logging": "1.0.0-beta6",
+    "Microsoft.Framework.Logging.Console": "1.0.0-beta6",
   },
 
   "frameworks": {
     "net45": {
-      "dependencies": {
-
+      "frameworkAssemblies": {
+        "System.Numerics": "4.0.0.0"
 
 
       }
     },
     "dnx451": {
-
+      "frameworkAssemblies": {
+        "System.Numerics": "4.0.0.0"
+      }
     }
   }
 }

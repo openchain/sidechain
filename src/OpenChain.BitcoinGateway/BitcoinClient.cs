@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using NBitcoin;
 using Newtonsoft.Json.Linq;
@@ -14,6 +15,7 @@ namespace OpenChain.BitcoinGateway
         private readonly Key receivingKey;
         private readonly Key storageKey;
         private readonly Network network;
+        private readonly long defaultFees = 1000;
 
         public BitcoinClient(Uri url, Key receivingKey, Key storageKey, Network network)
         {
@@ -48,6 +50,30 @@ namespace OpenChain.BitcoinGateway
             }
 
             return result;
+        }
+
+        public async Task<string> MoveToStorage(InboundTransaction transaction)
+        {
+            NBitcoin.Transaction tx = new TransactionBuilder()
+                .AddKeys(receivingKey)
+                .AddCoins(new Coin(
+                    uint256.Parse(transaction.TransactionHash),
+                    (uint)transaction.OutputIndex,
+                    transaction.Amount,
+                    receivingKey.ScriptPubKey))
+                .Send(storageKey.ScriptPubKey, transaction.Amount - defaultFees)
+                .SendFees(defaultFees)
+                .BuildTransaction(true);
+            
+            HttpClient client = new HttpClient();
+            StringContent content = new StringContent($"\"{tx.ToHex()}\"");
+            content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            HttpResponseMessage response = await client.PostAsync(new Uri(url, $"sendrawtransaction"), content);
+            response.EnsureSuccessStatusCode();
+
+            JToken result = JToken.Parse(await response.Content.ReadAsStringAsync());
+
+            return (string)result;
         }
     }
 }

@@ -52,6 +52,40 @@ namespace OpenChain.BitcoinGateway
             return result;
         }
 
+        public async Task<BinaryData> IssueWithdrawal(IList<OutboundTransaction> transactions)
+        {
+            HttpClient client = new HttpClient();
+            BitcoinAddress address = storageKey.ScriptPubKey.GetDestinationAddress(this.network);
+            HttpResponseMessage response = await client.GetAsync(new Uri(url, $"addresses/{address.ToString()}/unspents"));
+
+            string body = await response.Content.ReadAsStringAsync();
+
+            JArray outputs = JArray.Parse(body);
+
+            TransactionBuilder builder = new TransactionBuilder();
+            builder.AddKeys(storageKey.GetBitcoinSecret(network));
+            foreach (JObject output in outputs)
+            {
+                string transactionHash = (string)output["transaction_hash"];
+                uint outputIndex = (uint)output["output_index"];
+                long amount = (long)output["value"];
+
+                builder.AddCoins(new Coin(uint256.Parse(transactionHash), outputIndex, new Money(amount), storageKey.ScriptPubKey));
+            }
+
+            foreach (OutboundTransaction outboundTransaction in transactions)
+            {
+                builder.Send(BitcoinAddress.Create(outboundTransaction.Account, network).ScriptPubKey, new Money(outboundTransaction.Amount));
+            }
+
+            builder.SendFees(1000);
+            builder.SetChange(storageKey.ScriptPubKey, ChangeType.All);
+
+            NBitcoin.Transaction transaction = builder.BuildTransaction(true);
+
+            return new BinaryData(transaction.ToBytes());
+        }
+
         public async Task<string> MoveToStorage(InboundTransaction transaction)
         {
             NBitcoin.Transaction tx = new TransactionBuilder()
@@ -64,15 +98,21 @@ namespace OpenChain.BitcoinGateway
                 .Send(storageKey.ScriptPubKey, transaction.Amount - defaultFees)
                 .SendFees(defaultFees)
                 .BuildTransaction(true);
-            
+
+            string result = await SubmitTransaction(new BinaryData(tx.ToBytes()));
+
+            return result;
+        }
+
+        public async Task<string> SubmitTransaction(BinaryData transaction)
+        {
             HttpClient client = new HttpClient();
-            StringContent content = new StringContent($"\"{tx.ToHex()}\"");
+            StringContent content = new StringContent($"\"{transaction.ToString()}\"");
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
             HttpResponseMessage response = await client.PostAsync(new Uri(url, $"sendrawtransaction"), content);
             response.EnsureSuccessStatusCode();
 
             JToken result = JToken.Parse(await response.Content.ReadAsStringAsync());
-
             return (string)result;
         }
     }

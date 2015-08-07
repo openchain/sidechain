@@ -85,9 +85,9 @@ namespace OpenChain.BitcoinGateway
         {
             List<Record> records = new List<Record>();
 
-            string issuanceAccount = $"/asset/{assetName}/{transaction.TransactionHash}/{transaction.OutputIndex}";
-            string asset = $"/asset/{assetName}";
-            string toAddress = $"/p2pkh/{transaction.Address}";
+            string issuanceAccount = $"/asset/{assetName}/{transaction.TransactionHash}/{transaction.OutputIndex}/";
+            string asset = $"/asset/{assetName}/";
+            string toAddress = $"/p2pkh/{transaction.Address}/";
 
             HttpClient client = new HttpClient();
             BinaryData issuanceKey = Encode($"{issuanceAccount}:ACC:{asset}");
@@ -123,8 +123,8 @@ namespace OpenChain.BitcoinGateway
 
         public async Task<IList<OutboundTransaction>> GetUnprocessedTransactions()
         {
-            string account = $"/asset/{assetName}/out";
-            string asset = $"/asset/{assetName}";
+            string account = $"/asset/{assetName}/out/";
+            string asset = $"/asset/{assetName}/";
 
             HttpClient client = new HttpClient();
             BinaryData key = Encode($"{account}:ACC:{asset}");
@@ -159,7 +159,7 @@ namespace OpenChain.BitcoinGateway
                 if (balanceChange < 0)
                     continue;
 
-                BinaryData spendingKey = Encode($"/assets/{assetName}/processed/{currentVersion.ToString()}:DATA");
+                BinaryData spendingKey = Encode($"/assets/{assetName}/processed/{currentVersion.ToString()}/:DATA");
 
                 getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={spendingKey.ToString()}"));
                 BinaryData processedValue = BinaryData.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["value"]);
@@ -177,7 +177,7 @@ namespace OpenChain.BitcoinGateway
 
         private string GetPayingAddress(Mutation outgoingTransaction)
         {
-            string asset = $"/asset/{assetName}";
+            string asset = $"/asset/{assetName}/";
 
             foreach (Record record in outgoingTransaction.Records)
             {
@@ -218,8 +218,8 @@ namespace OpenChain.BitcoinGateway
                 Mutation mutation;
                 if (!Transactions.TryGetValue(hash, out mutation))
                 {
-                    string account = $"/asset/{assetName}/out";
-                    string asset = $"/asset/{assetName}";
+                    string account = $"/asset/{assetName}/out/";
+                    string asset = $"/asset/{assetName}/";
 
                     HttpClient client = new HttpClient();
                     BinaryData key = new BinaryData(Encoding.UTF8.GetBytes($"{account}:ACC:{asset}"));

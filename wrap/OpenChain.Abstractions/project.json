@@ -1,6 +1,11 @@
 {
   "version": "1.0.0-*",
   "frameworks": {
+    "dnxcore50": {
+      "bin": {
+        "assembly": "../../lib/dnxcore50/OpenChain.Abstractions.dll"
+      }
+    },
     "net46": {
       "bin": {
         "assembly": "../../lib/net46/OpenChain.Abstractions.dll"

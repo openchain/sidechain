@@ -7,7 +7,7 @@ namespace OpenChain.BitcoinGateway
 {
     public class OutboundTransaction
     {
-        public OutboundTransaction(string account, string asset, long amount, BinaryData mutationHash)
+        public OutboundTransaction(string account, string asset, long amount, ByteString mutationHash)
         {
             this.Account = account;
             this.Asset = asset; 
@@ -17,7 +17,7 @@ namespace OpenChain.BitcoinGateway
 
         public string Account { get; }
 
-        public BinaryData MutationHash { get; }
+        public ByteString MutationHash { get; }
 
         public string Asset { get; }
 

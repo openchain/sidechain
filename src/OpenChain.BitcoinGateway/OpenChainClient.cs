@@ -44,13 +44,13 @@ namespace OpenChain.BitcoinGateway
             HttpClient client = new HttpClient();
             JObject json = JObject.FromObject(new
             {
-                transaction = new BinaryData(serializedMutation).ToString(),
+                transaction = new ByteString(serializedMutation).ToString(),
                 signatures = new[]
                 {
                     new
                     {
-                        pub_key = new BinaryData(openChainKey.PubKey.ToBytes()).ToString(),
-                        signature = new BinaryData(signature).ToString()
+                        pub_key = new ByteString(openChainKey.PubKey.ToBytes()).ToString(),
+                        signature = new ByteString(signature).ToString()
                     }
                 }
             });
@@ -61,7 +61,7 @@ namespace OpenChain.BitcoinGateway
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task MoveToRedemption(IList<OutboundTransaction> transactions, BinaryData btcTransaction)
+        public async Task MoveToRedemption(IList<OutboundTransaction> transactions, ByteString btcTransaction)
         {
             List<Record> records = new List<Record>();
             
@@ -71,10 +71,10 @@ namespace OpenChain.BitcoinGateway
                 records.Add(new Record(
                     key: Encode($"/asset/{assetName}/processed/{transaction.MutationHash.ToString()}:DATA"),
                     value: Encode(JObject.FromObject(new { transactions = new[] { btcTransaction.ToString() } }).ToString()),
-                    version: BinaryData.Empty));
+                    version: ByteString.Empty));
             }
 
-            Mutation mutation = new Mutation(Encode(this.openChainUri.ToString()), records, BinaryData.Empty);
+            Mutation mutation = new Mutation(Encode(this.openChainUri.ToString()), records, ByteString.Empty);
 
             byte[] serializedMutation = MessageSerializer.SerializeMutation(mutation);
 
@@ -90,33 +90,33 @@ namespace OpenChain.BitcoinGateway
             string toAddress = $"/p2pkh/{transaction.Address}/";
 
             HttpClient client = new HttpClient();
-            BinaryData issuanceKey = Encode($"{issuanceAccount}:ACC:{asset}");
+            ByteString issuanceKey = Encode($"{issuanceAccount}:ACC:{asset}");
             HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={issuanceKey.ToString()}"));
-            BinaryData issuanceVersion = BinaryData.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["version"]);
+            ByteString issuanceVersion = ByteString.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["version"]);
 
             if (issuanceVersion.Value.Count != 0)
                 return null;
 
-            BinaryData key = Encode($"{toAddress}:ACC:{asset}");
+            ByteString key = Encode($"{toAddress}:ACC:{asset}");
             getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={key.ToString()}"));
             JObject toAccount = JObject.Parse(await getValueResponse.Content.ReadAsStringAsync());
-            BinaryData version = BinaryData.Parse((string)toAccount["version"]);
-            long currentToBalance = BitConverter.ToInt64(BinaryData.Parse((string)toAccount["value"]).Value.Reverse().ToArray(), 0);
+            ByteString version = ByteString.Parse((string)toAccount["version"]);
+            long currentToBalance = BitConverter.ToInt64(ByteString.Parse((string)toAccount["value"]).Value.Reverse().ToArray(), 0);
 
             records.Add(new Record(
                 key: issuanceKey,
-                value: new BinaryData(BitConverter.GetBytes(-transaction.Amount).Reverse().ToArray()),
-                version: BinaryData.Empty));
+                value: new ByteString(BitConverter.GetBytes(-transaction.Amount).Reverse().ToArray()),
+                version: ByteString.Empty));
 
             records.Add(new Record(
                 key: key,
-                value: new BinaryData(BitConverter.GetBytes(currentToBalance + transaction.Amount).Reverse().ToArray()),
+                value: new ByteString(BitConverter.GetBytes(currentToBalance + transaction.Amount).Reverse().ToArray()),
                 version: version));
 
             Mutation mutation = new Mutation(
                 Encode(this.openChainUri.ToString()),
                 records,
-                BinaryData.Empty);
+                ByteString.Empty);
 
             return MessageSerializer.SerializeMutation(mutation);
         }
@@ -127,15 +127,15 @@ namespace OpenChain.BitcoinGateway
             string asset = $"/asset/{assetName}/";
 
             HttpClient client = new HttpClient();
-            BinaryData key = Encode($"{account}:ACC:{asset}");
+            ByteString key = Encode($"{account}:ACC:{asset}");
             HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={key.ToString()}"));
-            BinaryData currentVersion = BinaryData.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["version"]);
+            ByteString currentVersion = ByteString.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["version"]);
 
             TransactionCache cache = new TransactionCache(openChainUri, assetName);
 
             List<OutboundTransaction> result = new List<OutboundTransaction>();
 
-            while (!currentVersion.Equals(BinaryData.Empty))
+            while (!currentVersion.Equals(ByteString.Empty))
             {
                 Mutation mutation = await cache.GetMutation(currentVersion);
 
@@ -143,7 +143,7 @@ namespace OpenChain.BitcoinGateway
                 long balance = BitConverter.ToInt64(record.Value.Value.Reverse().ToArray(), 0);
 
                 long balanceChange;
-                if (record.Version.Equals(BinaryData.Empty))
+                if (record.Version.Equals(ByteString.Empty))
                 {
                     balanceChange = balance;
                 }
@@ -159,11 +159,11 @@ namespace OpenChain.BitcoinGateway
                 if (balanceChange < 0)
                     continue;
 
-                BinaryData spendingKey = Encode($"/assets/{assetName}/processed/{currentVersion.ToString()}/:DATA");
+                ByteString spendingKey = Encode($"/assets/{assetName}/processed/{currentVersion.ToString()}/:DATA");
 
                 getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={spendingKey.ToString()}"));
-                BinaryData processedValue = BinaryData.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["value"]);
-                if (processedValue.Equals(BinaryData.Empty))
+                ByteString processedValue = ByteString.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["value"]);
+                if (processedValue.Equals(ByteString.Empty))
                 {
                     string payingAddress = GetPayingAddress(mutation);
                     result.Add(new OutboundTransaction(payingAddress, null, balanceChange, currentVersion));
@@ -195,9 +195,9 @@ namespace OpenChain.BitcoinGateway
             return null;
         }
 
-        private static BinaryData Encode(string data)
+        private static ByteString Encode(string data)
         {
-            return new BinaryData(Encoding.UTF8.GetBytes(data));
+            return new ByteString(Encoding.UTF8.GetBytes(data));
         }
 
         private class TransactionCache
@@ -211,9 +211,9 @@ namespace OpenChain.BitcoinGateway
                 this.assetName = assetName;
             }
 
-            public Dictionary<BinaryData, Mutation> Transactions { get; } = new Dictionary<BinaryData, Mutation>();
+            public Dictionary<ByteString, Mutation> Transactions { get; } = new Dictionary<ByteString, Mutation>();
 
-            public async Task<Mutation> GetMutation(BinaryData hash)
+            public async Task<Mutation> GetMutation(ByteString hash)
             {
                 Mutation mutation;
                 if (!Transactions.TryGetValue(hash, out mutation))
@@ -222,12 +222,12 @@ namespace OpenChain.BitcoinGateway
                     string asset = $"/asset/{assetName}/";
 
                     HttpClient client = new HttpClient();
-                    BinaryData key = new BinaryData(Encoding.UTF8.GetBytes($"{account}:ACC:{asset}"));
+                    ByteString key = new ByteString(Encoding.UTF8.GetBytes($"{account}:ACC:{asset}"));
 
                     HttpResponseMessage getTransactionResponse = await client.GetAsync(new Uri(openChainUri, $"query/transaction?mutationHash={hash.ToString()}"));
                     JToken rawTransaction = JToken.Parse(await getTransactionResponse.Content.ReadAsStringAsync());
 
-                    Transaction transaction = MessageSerializer.DeserializeTransaction(BinaryData.Parse((string)rawTransaction["raw"]));
+                    Transaction transaction = MessageSerializer.DeserializeTransaction(ByteString.Parse((string)rawTransaction["raw"]));
                     mutation = MessageSerializer.DeserializeMutation(transaction.Mutation);
 
                     Transactions.Add(key, mutation);

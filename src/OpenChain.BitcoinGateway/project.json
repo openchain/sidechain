@@ -21,6 +21,20 @@
   },
 
   "frameworks": {
+    "dnxcore50": {
+      "dependencies": {
+        "System.Collections": "4.0.10-beta-22816",
+        "System.Linq": "4.0.0-beta-22816",
+        "System.Threading": "4.0.10-beta-22816",
+        "System.Runtime.Extensions": "4.0.10-beta-22816",
+        "System.Text.RegularExpressions": "4.0.10-beta-22816",
+        "System.Globalization": "4.0.10-beta-22816",
+        "System.Reflection.TypeExtensions": "4.0.0-beta-22816",
+        "System.Reflection.Extensions": "4.0.0-beta-22816",
+        "Microsoft.CSharp": "4.0.0-beta-22816",
+        "System.Runtime.Numerics": "4.0.0-beta-22816"
+      }
+    },
     "net45": {
       "frameworkAssemblies": {
         "System.Numerics": "4.0.0.0"

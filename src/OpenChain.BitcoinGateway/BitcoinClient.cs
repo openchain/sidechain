@@ -52,7 +52,7 @@ namespace OpenChain.BitcoinGateway
             return result;
         }
 
-        public async Task<BinaryData> IssueWithdrawal(IList<OutboundTransaction> transactions)
+        public async Task<ByteString> IssueWithdrawal(IList<OutboundTransaction> transactions)
         {
             HttpClient client = new HttpClient();
             BitcoinAddress address = storageKey.ScriptPubKey.GetDestinationAddress(this.network);
@@ -83,7 +83,7 @@ namespace OpenChain.BitcoinGateway
 
             NBitcoin.Transaction transaction = builder.BuildTransaction(true);
 
-            return new BinaryData(transaction.ToBytes());
+            return new ByteString(transaction.ToBytes());
         }
 
         public async Task<string> MoveToStorage(InboundTransaction transaction)
@@ -99,12 +99,12 @@ namespace OpenChain.BitcoinGateway
                 .SendFees(defaultFees)
                 .BuildTransaction(true);
 
-            string result = await SubmitTransaction(new BinaryData(tx.ToBytes()));
+            string result = await SubmitTransaction(new ByteString(tx.ToBytes()));
 
             return result;
         }
 
-        public async Task<string> SubmitTransaction(BinaryData transaction)
+        public async Task<string> SubmitTransaction(ByteString transaction)
         {
             HttpClient client = new HttpClient();
             StringContent content = new StringContent($"\"{transaction.ToString()}\"");

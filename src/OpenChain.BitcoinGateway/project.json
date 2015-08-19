@@ -10,7 +10,7 @@
 
     "Microsoft.CSharp": "4.0.0-beta-23019",
     "Microsoft.Framework.DependencyInjection": "1.0.0-beta6",
-    "Google.ProtocolBuffers": "2.4.1.555",
+    "Google.Protobuf": "3.0.0-a20150808-e58cdbd214",
     "NBitcoin": "2.1.4.5",
     "Portable.BouncyCastle": "1.8.0-RC1",
     "Microsoft.Net.Http.Client": "1.0.0-beta6-10079",

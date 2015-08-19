@@ -6,11 +6,6 @@
         "assembly": "../../lib/dnxcore50/OpenChain.Abstractions.dll"
       }
     },
-    "net46": {
-      "bin": {
-        "assembly": "../../lib/net46/OpenChain.Abstractions.dll"
-      }
-    },
     "net45": {
       "bin": {
         "assembly": "../../lib/net45/OpenChain.Abstractions.dll"

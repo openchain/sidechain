@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using NBitcoin;
 using Newtonsoft.Json.Linq;
 
-namespace OpenChain.BitcoinGateway
+namespace Openchain.BitcoinGateway
 {
     public class BitcoinClient
     {

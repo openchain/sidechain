@@ -8,9 +8,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using OpenChain;
 
-namespace OpenChain.BitcoinGateway
+namespace Openchain.BitcoinGateway
 {
     public class OpenChainClient
     {

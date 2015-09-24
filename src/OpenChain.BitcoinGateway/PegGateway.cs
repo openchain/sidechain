@@ -6,7 +6,7 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using NBitcoin;
 
-namespace OpenChain.BitcoinGateway
+namespace Openchain.BitcoinGateway
 {
     public class PegGateway
     {

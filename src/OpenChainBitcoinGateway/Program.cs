@@ -6,9 +6,8 @@ using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using NBitcoin;
-using OpenChain.BitcoinGateway;
 
-namespace OpenChainBitcoinGateway
+namespace Openchain.BitcoinGateway
 {
     public static class Program
     {

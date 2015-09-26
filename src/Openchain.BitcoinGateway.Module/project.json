@@ -10,7 +10,7 @@
     "Microsoft.Framework.DependencyInjection": "1.0.0-*",
     "Microsoft.Framework.Configuration": "1.0.0-beta6",
     "Microsoft.Framework.Configuration.Json": "1.0.0-beta6",
-    "OpenChain.BitcoinGateway": "1.0.0-*"
+    "Openchain.BitcoinGateway": "1.0.0-*"
   },
 
   "commands": {

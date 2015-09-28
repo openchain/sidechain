@@ -7,7 +7,6 @@
   "licenseUrl": "",
 
   "dependencies": {
-
     "Microsoft.CSharp": "4.0.0-beta-23225",
     "Microsoft.Framework.DependencyInjection": "1.0.0-beta7",
     "Google.Protobuf": "3.0.0-*",
@@ -15,9 +14,9 @@
     "Portable.BouncyCastle": "1.8.0-RC2",
     "System.Net.Http": "4.0.1-beta-23225",
     "Newtonsoft.Json": "7.0.1",
-    "Openchain.Abstractions": "0.2.2-*",
+    "Openchain.Abstractions": "0.3.0-*",
     "Microsoft.Framework.Logging": "1.0.0-beta7",
-    "Microsoft.Framework.Logging.Console": "1.0.0-beta7",
+    "Microsoft.Framework.Logging.Console": "1.0.0-beta7"
   },
 
   "frameworks": {

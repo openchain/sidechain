@@ -32,7 +32,7 @@ namespace Openchain.BitcoinGateway
 
             logger.LogInformation("Starting gateway...");
 
-            gateway.OpenChainToBitcoin().Wait();
+            gateway.OpenchainToBitcoin().Wait();
 
             Console.ReadLine();
         }

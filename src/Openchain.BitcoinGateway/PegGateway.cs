@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
-using NBitcoin;
 
 namespace Openchain.BitcoinGateway
 {
@@ -44,7 +41,7 @@ namespace Openchain.BitcoinGateway
             }
         }
 
-        public async Task OpenChainToBitcoin()
+        public async Task OpenchainToBitcoin()
         {
             while (true)
             {

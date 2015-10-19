@@ -133,14 +133,14 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.3.0": {
+      "Openchain.Abstractions/0.4.1": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
-          "System.Collections": "4.0.11-beta-23225",
-          "System.Linq": "4.0.1-beta-23225",
-          "System.Runtime.Extensions": "4.0.11-beta-23225",
-          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225"
+          "System.Collections": "4.0.11-beta-23409",
+          "System.Linq": "4.0.1-beta-23409",
+          "System.Runtime.Extensions": "4.0.11-beta-23409",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23409"
         },
         "compile": {
           "lib/dotnet/Openchain.Abstractions.dll": {}
@@ -507,37 +507,33 @@
           "lib/dotnet/System.Runtime.Numerics.dll": {}
         }
       },
-      "System.Security.Cryptography.Algorithms/4.0.0-beta-23225": {
+      "System.Security.Cryptography.Algorithms/4.0.0-beta-23409": {
         "type": "package",
         "dependencies": {
-          "System.IO": "4.0.10",
-          "System.Resources.ResourceManager": "4.0.0",
-          "System.Runtime": "4.0.20",
-          "System.Runtime.Handles": "4.0.0",
-          "System.Security.Cryptography.Primitives": "4.0.0-beta-23225",
-          "System.Text.Encoding": "4.0.0",
-          "System.Text.Encoding.Extensions": "4.0.0"
+          "System.IO": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Security.Cryptography.Primitives": "4.0.0-beta-23409"
         },
         "compile": {
           "ref/dotnet/System.Security.Cryptography.Algorithms.dll": {}
-        },
-        "runtime": {
-          "lib/DNXCore50/System.Security.Cryptography.Algorithms.dll": {}
         }
       },
-      "System.Security.Cryptography.Primitives/4.0.0-beta-23225": {
+      "System.Security.Cryptography.Primitives/4.0.0-beta-23409": {
         "type": "package",
         "dependencies": {
+          "System.Diagnostics.Debug": "4.0.0",
           "System.Globalization": "4.0.0",
           "System.IO": "4.0.10",
           "System.Resources.ResourceManager": "4.0.0",
-          "System.Runtime": "4.0.20"
+          "System.Runtime": "4.0.20",
+          "System.Threading": "4.0.0",
+          "System.Threading.Tasks": "4.0.0"
         },
         "compile": {
           "ref/dotnet/System.Security.Cryptography.Primitives.dll": {}
         },
         "runtime": {
-          "lib/DNXCore50/System.Security.Cryptography.Primitives.dll": {}
+          "lib/dotnet/System.Security.Cryptography.Primitives.dll": {}
         }
       },
       "System.Text.Encoding/4.0.0": {
@@ -547,16 +543,6 @@
         },
         "compile": {
           "ref/dotnet/System.Text.Encoding.dll": {}
-        }
-      },
-      "System.Text.Encoding.Extensions/4.0.0": {
-        "type": "package",
-        "dependencies": {
-          "System.Runtime": "4.0.0",
-          "System.Text.Encoding": "4.0.0"
-        },
-        "compile": {
-          "ref/dotnet/System.Text.Encoding.Extensions.dll": {}
         }
       },
       "System.Text.RegularExpressions/4.0.11-beta-23409": {
@@ -712,7 +698,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.3.0": {
+      "Openchain.Abstractions/0.4.1": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -868,7 +854,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.3.0": {
+      "Openchain.Abstractions/0.4.1": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -1054,14 +1040,14 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.3.0": {
+      "Openchain.Abstractions/0.4.1": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
-          "System.Collections": "4.0.11-beta-23225",
-          "System.Linq": "4.0.1-beta-23225",
-          "System.Runtime.Extensions": "4.0.11-beta-23225",
-          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225"
+          "System.Collections": "4.0.11-beta-23409",
+          "System.Linq": "4.0.1-beta-23409",
+          "System.Runtime.Extensions": "4.0.11-beta-23409",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23409"
         },
         "compile": {
           "lib/dotnet/Openchain.Abstractions.dll": {}
@@ -1142,6 +1128,25 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Runtime.Extensions.dll": {}
+        }
+      },
+      "runtime.win7.System.Security.Cryptography.Algorithms/4.0.0-beta-23409": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Handles": "4.0.0",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Security.Cryptography.Primitives": "4.0.0-beta-23409",
+          "System.Text.Encoding": "4.0.0",
+          "System.Text.Encoding.Extensions": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet/_._": {}
+        },
+        "runtime": {
+          "runtimes/win7/lib/dotnet/System.Security.Cryptography.Algorithms.dll": {}
         }
       },
       "runtime.win7.System.Threading/4.0.11-beta-23409": {
@@ -1817,14 +1822,14 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.3.0": {
+      "Openchain.Abstractions/0.4.1": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
-          "System.Collections": "4.0.11-beta-23225",
-          "System.Linq": "4.0.1-beta-23225",
-          "System.Runtime.Extensions": "4.0.11-beta-23225",
-          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23225"
+          "System.Collections": "4.0.11-beta-23409",
+          "System.Linq": "4.0.1-beta-23409",
+          "System.Runtime.Extensions": "4.0.11-beta-23409",
+          "System.Security.Cryptography.Algorithms": "4.0.0-beta-23409"
         },
         "compile": {
           "lib/dotnet/Openchain.Abstractions.dll": {}
@@ -1905,6 +1910,25 @@
         },
         "runtime": {
           "lib/DNXCore50/System.Runtime.Extensions.dll": {}
+        }
+      },
+      "runtime.win7.System.Security.Cryptography.Algorithms/4.0.0-beta-23409": {
+        "type": "package",
+        "dependencies": {
+          "System.IO": "4.0.10",
+          "System.Resources.ResourceManager": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Handles": "4.0.0",
+          "System.Runtime.InteropServices": "4.0.20",
+          "System.Security.Cryptography.Primitives": "4.0.0-beta-23409",
+          "System.Text.Encoding": "4.0.0",
+          "System.Text.Encoding.Extensions": "4.0.0"
+        },
+        "compile": {
+          "ref/dotnet/_._": {}
+        },
+        "runtime": {
+          "runtimes/win7/lib/dotnet/System.Security.Cryptography.Algorithms.dll": {}
         }
       },
       "runtime.win7.System.Threading/4.0.11-beta-23409": {
@@ -2549,7 +2573,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.3.0": {
+      "Openchain.Abstractions/0.4.1": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -2710,7 +2734,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.3.0": {
+      "Openchain.Abstractions/0.4.1": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -2872,7 +2896,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.3.0": {
+      "Openchain.Abstractions/0.4.1": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -3034,7 +3058,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.3.0": {
+      "Openchain.Abstractions/0.4.1": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -3312,9 +3336,9 @@
         "tools/install.ps1"
       ]
     },
-    "Openchain.Abstractions/0.3.0": {
+    "Openchain.Abstractions/0.4.1": {
       "type": "package",
-      "sha512": "Fi7RilgpR1WpT2uoK6sgHAwJbpKGM7s5tN7Qm3SxnVFUR+W6VkN+RGch1U1nG18EY03yzPtD+v76xuDCakVBtQ==",
+      "sha512": "dXrfCVEaKwdUwxc8QbkuvP24YfSwh7tjohOLdxgnKrgPFnM4SHBSsK46O2gUVap5pbOqTUJR+V1ZQv6tUnZLng==",
       "files": [
         "lib/dnx451/Openchain.Abstractions.dll",
         "lib/dnx451/Openchain.Abstractions.xml",
@@ -3322,8 +3346,8 @@
         "lib/dotnet/Openchain.Abstractions.xml",
         "lib/net45/Openchain.Abstractions.dll",
         "lib/net45/Openchain.Abstractions.xml",
-        "Openchain.Abstractions.0.3.0.nupkg",
-        "Openchain.Abstractions.0.3.0.nupkg.sha512",
+        "Openchain.Abstractions.0.4.1.nupkg",
+        "Openchain.Abstractions.0.4.1.nupkg.sha512",
         "Openchain.Abstractions.nuspec"
       ]
     },
@@ -3521,6 +3545,18 @@
         "runtimes/win8-aot/lib/netcore50/System.Runtime.Extensions.xml",
         "runtimes/win8-aot/lib/netcore50/zh-hans/System.Runtime.Extensions.xml",
         "runtimes/win8-aot/lib/netcore50/zh-hant/System.Runtime.Extensions.xml"
+      ]
+    },
+    "runtime.win7.System.Security.Cryptography.Algorithms/4.0.0-beta-23409": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "PrJGMz2OMzrBLNk39ziGtRqiA5eDSLUq+M0ynsH4sl7vmvlwckEuFrh44du5IU02xQYrhMcufma+QRzJ7hEA0w==",
+      "files": [
+        "ref/dotnet/_._",
+        "runtime.win7.System.Security.Cryptography.Algorithms.4.0.0-beta-23409.nupkg",
+        "runtime.win7.System.Security.Cryptography.Algorithms.4.0.0-beta-23409.nupkg.sha512",
+        "runtime.win7.System.Security.Cryptography.Algorithms.nuspec",
+        "runtimes/win7/lib/dotnet/System.Security.Cryptography.Algorithms.dll"
       ]
     },
     "runtime.win7.System.Threading/4.0.11-beta-23409": {
@@ -4612,28 +4648,6 @@
         "System.Runtime.Numerics.nuspec"
       ]
     },
-    "System.Security.Cryptography.Algorithms/4.0.0-beta-23225": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "BvUX0qHC9DKP6kjhS6EvHFKSXiiTxPlNvni44x+QAKWsBPWZQLUJVNyiORdRZEqg1zKKV4UI3fo0WTgBIHAPhw==",
-      "files": [
-        "lib/DNXCore50/System.Security.Cryptography.Algorithms.dll",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net46/System.Security.Cryptography.Algorithms.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "ref/dotnet/System.Security.Cryptography.Algorithms.dll",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net46/System.Security.Cryptography.Algorithms.dll",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "System.Security.Cryptography.Algorithms.4.0.0-beta-23225.nupkg",
-        "System.Security.Cryptography.Algorithms.4.0.0-beta-23225.nupkg.sha512",
-        "System.Security.Cryptography.Algorithms.nuspec"
-      ]
-    },
     "System.Security.Cryptography.Algorithms/4.0.0-beta-23409": {
       "type": "package",
       "serviceable": true,
@@ -4676,28 +4690,6 @@
         "System.Security.Cryptography.Encoding.4.0.0-beta-23409.nupkg",
         "System.Security.Cryptography.Encoding.4.0.0-beta-23409.nupkg.sha512",
         "System.Security.Cryptography.Encoding.nuspec"
-      ]
-    },
-    "System.Security.Cryptography.Primitives/4.0.0-beta-23225": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "+d/qgU+N70qzg5oE5x/7NC4Y6LPwGVFbcQRl4MggXJrjWtO/dbybLTpMr3hj07nl17Fj7GxGjpwRZaIGnpux/w==",
-      "files": [
-        "lib/DNXCore50/System.Security.Cryptography.Primitives.dll",
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net46/System.Security.Cryptography.Primitives.dll",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "ref/dotnet/System.Security.Cryptography.Primitives.dll",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net46/System.Security.Cryptography.Primitives.dll",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "System.Security.Cryptography.Primitives.4.0.0-beta-23225.nupkg",
-        "System.Security.Cryptography.Primitives.4.0.0-beta-23225.nupkg.sha512",
-        "System.Security.Cryptography.Primitives.nuspec"
       ]
     },
     "System.Security.Cryptography.Primitives/4.0.0-beta-23409": {
@@ -4823,54 +4815,6 @@
         "System.Text.Encoding.4.0.10.nupkg",
         "System.Text.Encoding.4.0.10.nupkg.sha512",
         "System.Text.Encoding.nuspec"
-      ]
-    },
-    "System.Text.Encoding.Extensions/4.0.0": {
-      "type": "package",
-      "sha512": "FktA77+2DC0S5oRhgM569pbzFrcA45iQpYiI7+YKl68B6TfI2N5TQbXqSWlh2YXKoFXHi2RFwPMha2lxiFJZ6A==",
-      "files": [
-        "lib/MonoAndroid10/_._",
-        "lib/MonoTouch10/_._",
-        "lib/net45/_._",
-        "lib/win8/_._",
-        "lib/wp80/_._",
-        "lib/wpa81/_._",
-        "lib/xamarinios10/_._",
-        "lib/xamarinmac20/_._",
-        "License.rtf",
-        "ref/dotnet/de/System.Text.Encoding.Extensions.xml",
-        "ref/dotnet/es/System.Text.Encoding.Extensions.xml",
-        "ref/dotnet/fr/System.Text.Encoding.Extensions.xml",
-        "ref/dotnet/it/System.Text.Encoding.Extensions.xml",
-        "ref/dotnet/ja/System.Text.Encoding.Extensions.xml",
-        "ref/dotnet/ko/System.Text.Encoding.Extensions.xml",
-        "ref/dotnet/ru/System.Text.Encoding.Extensions.xml",
-        "ref/dotnet/System.Text.Encoding.Extensions.dll",
-        "ref/dotnet/System.Text.Encoding.Extensions.xml",
-        "ref/dotnet/zh-hans/System.Text.Encoding.Extensions.xml",
-        "ref/dotnet/zh-hant/System.Text.Encoding.Extensions.xml",
-        "ref/MonoAndroid10/_._",
-        "ref/MonoTouch10/_._",
-        "ref/net45/_._",
-        "ref/netcore50/de/System.Text.Encoding.Extensions.xml",
-        "ref/netcore50/es/System.Text.Encoding.Extensions.xml",
-        "ref/netcore50/fr/System.Text.Encoding.Extensions.xml",
-        "ref/netcore50/it/System.Text.Encoding.Extensions.xml",
-        "ref/netcore50/ja/System.Text.Encoding.Extensions.xml",
-        "ref/netcore50/ko/System.Text.Encoding.Extensions.xml",
-        "ref/netcore50/ru/System.Text.Encoding.Extensions.xml",
-        "ref/netcore50/System.Text.Encoding.Extensions.dll",
-        "ref/netcore50/System.Text.Encoding.Extensions.xml",
-        "ref/netcore50/zh-hans/System.Text.Encoding.Extensions.xml",
-        "ref/netcore50/zh-hant/System.Text.Encoding.Extensions.xml",
-        "ref/win8/_._",
-        "ref/wp80/_._",
-        "ref/wpa81/_._",
-        "ref/xamarinios10/_._",
-        "ref/xamarinmac20/_._",
-        "System.Text.Encoding.Extensions.4.0.0.nupkg",
-        "System.Text.Encoding.Extensions.4.0.0.nupkg.sha512",
-        "System.Text.Encoding.Extensions.nuspec"
       ]
     },
     "System.Text.Encoding.Extensions/4.0.10": {
@@ -5002,7 +4946,7 @@
       "NBitcoin >= 2.1.4.6",
       "System.Net.Http >= 4.0.1-beta-23409",
       "Newtonsoft.Json >= 7.0.1",
-      "Openchain.Abstractions >= 0.3.0-*",
+      "Openchain.Abstractions >= 0.4.1-*",
       "Microsoft.Framework.Logging >= 1.0.0-beta8",
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta8"
     ],

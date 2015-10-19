@@ -1,7 +1,7 @@
 ﻿{
-  "version": "1.0.0-*",
-  "description": "OpenChain.BitcoinGateway Class Library",
-  "authors": [ "Flavien" ],
+  "version": "0.1.0-*",
+  "description": "Bitcoin to Openchain gateway.",
+  "authors": [ "Flavien Charlon" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",

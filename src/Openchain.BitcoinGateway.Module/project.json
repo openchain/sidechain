@@ -1,7 +1,7 @@
 ﻿{
-  "version": "1.0.0-*",
-  "description": "OpenChainBitcoinGateway Console Application",
-  "authors": [ "Flavien" ],
+  "version": "0.1.0-*",
+  "description": "Console application for the Bitcoin to Openchain gateway.",
+  "authors": [ "Flavien Charlon" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",

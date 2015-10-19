@@ -180,7 +180,7 @@ namespace Openchain.BitcoinGateway
 
             foreach (Record record in outgoingTransaction.Records)
             {
-                string[] parts = Encoding.UTF8.GetString(record.Key.ToByteArray()).Split(':');
+                string[] parts = Encoding.UTF8.GetString(record.Key.ToByteArray(), 0, record.Key.Value.Count).Split(':');
                 if (parts.Length == 3 && parts[1] == "ACC" && parts[2] == asset)
                 {
                     Match match = accountRegex.Match(parts[0]);

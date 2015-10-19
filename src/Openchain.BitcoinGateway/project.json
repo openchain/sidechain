@@ -2,9 +2,11 @@
   "version": "0.1.0-*",
   "description": "Bitcoin to Openchain gateway.",
   "authors": [ "Flavien Charlon" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "owners": [ "Coinprism" ],
+  "projectUrl": "https://www.openchain.org/",
+  "licenseUrl": "https://www.apache.org/licenses/LICENSE-2.0",
+  "iconUrl": "https://www.openchain.org/package.png",
+  "copyright": "Copyright © 2015 Coinprism, Inc.",
 
   "dependencies": {
     "Microsoft.CSharp": "4.0.0-beta-23225",

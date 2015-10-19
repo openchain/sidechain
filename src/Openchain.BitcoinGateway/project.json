@@ -9,29 +9,27 @@
   "copyright": "Copyright © 2015 Coinprism, Inc.",
 
   "dependencies": {
-    "Microsoft.CSharp": "4.0.0-beta-23225",
-    "Microsoft.Framework.DependencyInjection": "1.0.0-beta7",
+    "Microsoft.CSharp": "4.0.1-beta-23409",
     "Google.Protobuf": "3.0.0-*",
     "NBitcoin": "2.1.4.6",
-    "Portable.BouncyCastle": "1.8.0-RC2",
-    "System.Net.Http": "4.0.1-beta-23225",
+    "System.Net.Http": "4.0.1-beta-23409",
     "Newtonsoft.Json": "7.0.1",
     "Openchain.Abstractions": "0.3.0-*",
-    "Microsoft.Framework.Logging": "1.0.0-beta7",
-    "Microsoft.Framework.Logging.Console": "1.0.0-beta7"
+    "Microsoft.Framework.Logging": "1.0.0-beta8",
+    "Microsoft.Framework.Logging.Console": "1.0.0-beta8"
   },
 
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
-        "System.Collections": "4.0.11-beta-23225",
-        "System.Linq": "4.0.1-beta-23225",
-        "System.Runtime.Extensions": "4.0.11-beta-23225",
-        "System.Text.RegularExpressions": "4.0.11-beta-23225",
-        "System.Globalization": "4.0.11-beta-23225",
-        "System.Reflection.TypeExtensions": "4.0.1-beta-23225",
-        "System.Reflection.Extensions": "4.0.1-beta-23225",
-        "System.Runtime.Numerics": "4.0.0-beta-22816"
+        "System.Collections": "4.0.11-beta-23409",
+        "System.Linq": "4.0.1-beta-23409",
+        "System.Runtime.Extensions": "4.0.11-beta-23409",
+        "System.Text.RegularExpressions": "4.0.11-beta-23409",
+        "System.Globalization": "4.0.11-beta-23409",
+        "System.Reflection.TypeExtensions": "4.0.1-beta-23409",
+        "System.Reflection.Extensions": "4.0.1-beta-23409",
+        "System.Runtime.Numerics": "4.0.1-beta-23409"
       }
     },
     "net45": {

@@ -16,7 +16,7 @@
   },
 
   "commands": {
-    "OpenChainBitcoinGateway": "OpenChainBitcoinGateway"
+    "start": "OpenChainBitcoinGateway"
   },
 
   "frameworks": {

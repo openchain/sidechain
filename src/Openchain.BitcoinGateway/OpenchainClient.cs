@@ -11,14 +11,14 @@ using Newtonsoft.Json.Linq;
 
 namespace Openchain.BitcoinGateway
 {
-    public class OpenChainClient
+    public class OpenchainClient
     {
         private readonly NBitcoin.Key openChainKey;
         private readonly Uri openChainUri;
         private readonly string assetName;
         private readonly Regex accountRegex = new Regex("/p2pkh/(?<address>[a-zA-Z0-9]+)(/.*$)?", RegexOptions.Compiled);
 
-        public OpenChainClient(NBitcoin.Key openChainKey, string assetName, Uri openChainUri)
+        public OpenchainClient(NBitcoin.Key openChainKey, string assetName, Uri openChainUri)
         {
             this.openChainKey = openChainKey;
             this.assetName = assetName;

@@ -27,7 +27,7 @@ namespace Openchain.BitcoinGateway
             logger.LogInformation($"Initializing OC-Bitcoin-Gateway with address {gatewayKey.PubKey.GetAddress(Network.TestNet)}");
 
             BitcoinClient bitcoin = new BitcoinClient(new Uri(config["bitcoin_api_url"]), gatewayKey, storageKey, Network.TestNet);
-            OpenChainClient openChain = new OpenChainClient(gatewayKey, "btc", new Uri(config["openchain_server"]));
+            OpenchainClient openChain = new OpenchainClient(gatewayKey, "btc", new Uri(config["openchain_server"]));
             PegGateway gateway = new PegGateway(bitcoin, openChain, logger);
 
             logger.LogInformation("Starting gateway...");

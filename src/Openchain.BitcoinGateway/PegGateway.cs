@@ -11,10 +11,10 @@ namespace Openchain.BitcoinGateway
     public class PegGateway
     {
         private readonly BitcoinClient bitcoinClient;
-        private readonly OpenChainClient openChainClient;
+        private readonly OpenchainClient openChainClient;
         private readonly ILogger logger;
 
-        public PegGateway(BitcoinClient bitcoinClient, OpenChainClient openChainClient, ILogger logger)
+        public PegGateway(BitcoinClient bitcoinClient, OpenchainClient openChainClient, ILogger logger)
         {
             this.bitcoinClient = bitcoinClient;
             this.openChainClient = openChainClient;

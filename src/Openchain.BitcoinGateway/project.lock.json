@@ -133,7 +133,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
@@ -698,7 +698,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -854,7 +854,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -1040,7 +1040,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
@@ -1822,7 +1822,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
@@ -2573,7 +2573,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -2734,7 +2734,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -2896,7 +2896,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -3058,7 +3058,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -3336,9 +3336,9 @@
         "tools/install.ps1"
       ]
     },
-    "Openchain.Abstractions/0.4.1": {
+    "Openchain.Abstractions/0.4.2": {
       "type": "package",
-      "sha512": "dXrfCVEaKwdUwxc8QbkuvP24YfSwh7tjohOLdxgnKrgPFnM4SHBSsK46O2gUVap5pbOqTUJR+V1ZQv6tUnZLng==",
+      "sha512": "ZABozHpRIh8A0k4nHOZmeQgKJsXyFC70+XA9HlrfKVVZ8Wim4Fx4Ijg300iqRo2paxjTF2TVJpbhcn1e87pRzQ==",
       "files": [
         "lib/dnx451/Openchain.Abstractions.dll",
         "lib/dnx451/Openchain.Abstractions.xml",
@@ -3346,8 +3346,8 @@
         "lib/dotnet/Openchain.Abstractions.xml",
         "lib/net45/Openchain.Abstractions.dll",
         "lib/net45/Openchain.Abstractions.xml",
-        "Openchain.Abstractions.0.4.1.nupkg",
-        "Openchain.Abstractions.0.4.1.nupkg.sha512",
+        "Openchain.Abstractions.0.4.2.nupkg",
+        "Openchain.Abstractions.0.4.2.nupkg.sha512",
         "Openchain.Abstractions.nuspec"
       ]
     },
@@ -4946,7 +4946,7 @@
       "NBitcoin >= 2.1.4.6",
       "System.Net.Http >= 4.0.1-beta-23409",
       "Newtonsoft.Json >= 7.0.1",
-      "Openchain.Abstractions >= 0.4.1-*",
+      "Openchain.Abstractions >= 0.4.2-*",
       "Microsoft.Framework.Logging >= 1.0.0-beta8",
       "Microsoft.Framework.Logging.Console >= 1.0.0-beta8"
     ],

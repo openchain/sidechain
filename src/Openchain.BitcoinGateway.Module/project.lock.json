@@ -194,7 +194,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
@@ -220,7 +220,7 @@
           "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.1",
+          "Openchain.Abstractions": "0.4.2",
           "System.Collections": "4.0.11-beta-23409",
           "System.Globalization": "4.0.11-beta-23409",
           "System.Linq": "4.0.1-beta-23409",
@@ -929,7 +929,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -959,7 +959,7 @@
           "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.1",
+          "Openchain.Abstractions": "0.4.2",
           "System.Net.Http": "4.0.1-beta-23409"
         },
         "frameworkAssemblies": [
@@ -1172,7 +1172,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -1202,7 +1202,7 @@
           "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.1",
+          "Openchain.Abstractions": "0.4.2",
           "System.Net.Http": "4.0.1-beta-23409"
         },
         "frameworkAssemblies": [
@@ -1436,7 +1436,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
@@ -1462,7 +1462,7 @@
           "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.1",
+          "Openchain.Abstractions": "0.4.2",
           "System.Collections": "4.0.11-beta-23409",
           "System.Globalization": "4.0.11-beta-23409",
           "System.Linq": "4.0.1-beta-23409",
@@ -1494,7 +1494,7 @@
           "runtimes/win7/lib/dotnet/System.Console.dll": {}
         }
       },
-      "runtime.win7.System.Diagnostics.Debug/4.0.11-beta-23326": {
+      "runtime.win7.System.Diagnostics.Debug/4.0.11-beta-23409": {
         "type": "package",
         "compile": {
           "ref/dotnet/_._": {}
@@ -1530,7 +1530,7 @@
           "runtimes/win7/lib/DNXCore50/System.Net.Http.dll": {}
         }
       },
-      "runtime.win7.System.Private.Uri/4.0.1-beta-23326": {
+      "runtime.win7.System.Private.Uri/4.0.1-beta-23409": {
         "type": "package",
         "compile": {
           "ref/dotnet/_._": {}
@@ -1567,7 +1567,7 @@
           "runtimes/win7/lib/dotnet/System.Security.Cryptography.Algorithms.dll": {}
         }
       },
-      "runtime.win7.System.Threading/4.0.11-beta-23326": {
+      "runtime.win7.System.Threading/4.0.11-beta-23409": {
         "type": "package",
         "compile": {
           "ref/dotnet/_._": {}
@@ -1888,13 +1888,13 @@
           "lib/DNXCore50/System.Reflection.Emit.ILGeneration.dll": {}
         }
       },
-      "System.Reflection.Emit.Lightweight/4.0.0": {
+      "System.Reflection.Emit.Lightweight/4.0.0-beta-23109": {
         "type": "package",
         "dependencies": {
-          "System.Reflection": "4.0.0",
-          "System.Reflection.Emit.ILGeneration": "4.0.0",
-          "System.Reflection.Primitives": "4.0.0",
-          "System.Runtime": "4.0.0"
+          "System.Reflection": "4.0.0-beta-23109",
+          "System.Reflection.Emit.ILGeneration": "4.0.0-beta-23109",
+          "System.Reflection.Primitives": "4.0.0-beta-23109",
+          "System.Runtime": "4.0.0-beta-23109"
         },
         "compile": {
           "ref/dotnet/System.Reflection.Emit.Lightweight.dll": {}
@@ -2351,7 +2351,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
@@ -2377,7 +2377,7 @@
           "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.1",
+          "Openchain.Abstractions": "0.4.2",
           "System.Collections": "4.0.11-beta-23409",
           "System.Globalization": "4.0.11-beta-23409",
           "System.Linq": "4.0.1-beta-23409",
@@ -2409,7 +2409,7 @@
           "runtimes/win7/lib/dotnet/System.Console.dll": {}
         }
       },
-      "runtime.win7.System.Diagnostics.Debug/4.0.11-beta-23326": {
+      "runtime.win7.System.Diagnostics.Debug/4.0.11-beta-23409": {
         "type": "package",
         "compile": {
           "ref/dotnet/_._": {}
@@ -2445,7 +2445,7 @@
           "runtimes/win7/lib/DNXCore50/System.Net.Http.dll": {}
         }
       },
-      "runtime.win7.System.Private.Uri/4.0.1-beta-23326": {
+      "runtime.win7.System.Private.Uri/4.0.1-beta-23409": {
         "type": "package",
         "compile": {
           "ref/dotnet/_._": {}
@@ -2482,7 +2482,7 @@
           "runtimes/win7/lib/dotnet/System.Security.Cryptography.Algorithms.dll": {}
         }
       },
-      "runtime.win7.System.Threading/4.0.11-beta-23326": {
+      "runtime.win7.System.Threading/4.0.11-beta-23409": {
         "type": "package",
         "compile": {
           "ref/dotnet/_._": {}
@@ -2803,13 +2803,13 @@
           "lib/DNXCore50/System.Reflection.Emit.ILGeneration.dll": {}
         }
       },
-      "System.Reflection.Emit.Lightweight/4.0.0": {
+      "System.Reflection.Emit.Lightweight/4.0.0-beta-23109": {
         "type": "package",
         "dependencies": {
-          "System.Reflection": "4.0.0",
-          "System.Reflection.Emit.ILGeneration": "4.0.0",
-          "System.Reflection.Primitives": "4.0.0",
-          "System.Runtime": "4.0.0"
+          "System.Reflection": "4.0.0-beta-23109",
+          "System.Reflection.Emit.ILGeneration": "4.0.0-beta-23109",
+          "System.Reflection.Primitives": "4.0.0-beta-23109",
+          "System.Runtime": "4.0.0-beta-23109"
         },
         "compile": {
           "ref/dotnet/System.Reflection.Emit.Lightweight.dll": {}
@@ -3244,7 +3244,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -3274,7 +3274,7 @@
           "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.1",
+          "Openchain.Abstractions": "0.4.2",
           "System.Net.Http": "4.0.1-beta-23409"
         },
         "frameworkAssemblies": [
@@ -3492,7 +3492,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -3522,7 +3522,7 @@
           "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.1",
+          "Openchain.Abstractions": "0.4.2",
           "System.Net.Http": "4.0.1-beta-23409"
         },
         "frameworkAssemblies": [
@@ -3741,7 +3741,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -3771,7 +3771,7 @@
           "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.1",
+          "Openchain.Abstractions": "0.4.2",
           "System.Net.Http": "4.0.1-beta-23409"
         },
         "frameworkAssemblies": [
@@ -3990,7 +3990,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.1": {
+      "Openchain.Abstractions/0.4.2": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -4020,7 +4020,7 @@
           "Microsoft.Framework.Logging.Console": "1.0.0-beta8",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.1",
+          "Openchain.Abstractions": "0.4.2",
           "System.Net.Http": "4.0.1-beta-23409"
         },
         "frameworkAssemblies": [
@@ -4358,9 +4358,9 @@
         "tools/install.ps1"
       ]
     },
-    "Openchain.Abstractions/0.4.1": {
+    "Openchain.Abstractions/0.4.2": {
       "type": "package",
-      "sha512": "dXrfCVEaKwdUwxc8QbkuvP24YfSwh7tjohOLdxgnKrgPFnM4SHBSsK46O2gUVap5pbOqTUJR+V1ZQv6tUnZLng==",
+      "sha512": "ZABozHpRIh8A0k4nHOZmeQgKJsXyFC70+XA9HlrfKVVZ8Wim4Fx4Ijg300iqRo2paxjTF2TVJpbhcn1e87pRzQ==",
       "files": [
         "lib/dnx451/Openchain.Abstractions.dll",
         "lib/dnx451/Openchain.Abstractions.xml",
@@ -4368,8 +4368,8 @@
         "lib/dotnet/Openchain.Abstractions.xml",
         "lib/net45/Openchain.Abstractions.dll",
         "lib/net45/Openchain.Abstractions.xml",
-        "Openchain.Abstractions.0.4.1.nupkg",
-        "Openchain.Abstractions.0.4.1.nupkg.sha512",
+        "Openchain.Abstractions.0.4.2.nupkg",
+        "Openchain.Abstractions.0.4.2.nupkg.sha512",
         "Openchain.Abstractions.nuspec"
       ]
     },
@@ -4444,14 +4444,14 @@
         "runtimes/win7/lib/dotnet/zh-hant/System.Console.xml"
       ]
     },
-    "runtime.win7.System.Diagnostics.Debug/4.0.11-beta-23326": {
+    "runtime.win7.System.Diagnostics.Debug/4.0.11-beta-23409": {
       "type": "package",
       "serviceable": true,
-      "sha512": "Npjy1uKUKuZzIqFmhbN1HuE2RjQp4HAI3KsoGUJ19QtrNPsd3TxXXQDbsI/EH1Tk4vKTNaQXdPTWRib5S8GtFA==",
+      "sha512": "ITLu13a/DQDMq1mHgxQnAjy4mFlYTTo+veCZ0K9PDYnzg9sNNjF+GhcKMkh3yOcMXwxdJr5gInXuqGHlD7bEug==",
       "files": [
         "ref/dotnet/_._",
-        "runtime.win7.System.Diagnostics.Debug.4.0.11-beta-23326.nupkg",
-        "runtime.win7.System.Diagnostics.Debug.4.0.11-beta-23326.nupkg.sha512",
+        "runtime.win7.System.Diagnostics.Debug.4.0.11-beta-23409.nupkg",
+        "runtime.win7.System.Diagnostics.Debug.4.0.11-beta-23409.nupkg.sha512",
         "runtime.win7.System.Diagnostics.Debug.nuspec",
         "runtimes/win7/lib/DNXCore50/de/System.Diagnostics.Debug.xml",
         "runtimes/win7/lib/DNXCore50/es/System.Diagnostics.Debug.xml",
@@ -4511,14 +4511,14 @@
         "runtimes/win7/lib/netcore50/zh-hant/System.Net.Http.xml"
       ]
     },
-    "runtime.win7.System.Private.Uri/4.0.1-beta-23326": {
+    "runtime.win7.System.Private.Uri/4.0.1-beta-23409": {
       "type": "package",
       "serviceable": true,
-      "sha512": "U9v9/1sBMUSCaYQoE/sDkgfasyU3OGRIFBf6VTCpDJM2IFFYTx99tv5VJO7gnVIFVPIeDUaIUnoEUe9yK6flJQ==",
+      "sha512": "9mcAednoAbDrL5t/GBPYFCfrxYaGxfvpkSkAt3LWQeCH0rp4PlJpOQNtIALcyCfG4lD+z0YBAXEQsZmMVs6C+Q==",
       "files": [
         "ref/dotnet/_._",
-        "runtime.win7.System.Private.Uri.4.0.1-beta-23326.nupkg",
-        "runtime.win7.System.Private.Uri.4.0.1-beta-23326.nupkg.sha512",
+        "runtime.win7.System.Private.Uri.4.0.1-beta-23409.nupkg",
+        "runtime.win7.System.Private.Uri.4.0.1-beta-23409.nupkg.sha512",
         "runtime.win7.System.Private.Uri.nuspec",
         "runtimes/win7/lib/DNXCore50/System.Private.Uri.dll",
         "runtimes/win7/lib/netcore50/System.Private.Uri.dll",
@@ -4581,14 +4581,14 @@
         "runtimes/win7/lib/dotnet/System.Security.Cryptography.Algorithms.dll"
       ]
     },
-    "runtime.win7.System.Threading/4.0.11-beta-23326": {
+    "runtime.win7.System.Threading/4.0.11-beta-23409": {
       "type": "package",
       "serviceable": true,
-      "sha512": "fZAStCu++KHcSRAEre7OA5tzNBgMxEu0H2KKtTEAkh0wcdCin/8N4HGVdcxsj13yXE/N5+BmfR7kWbDpLjz7kg==",
+      "sha512": "KUUz+kNOK8ZEaCDERH/lS8RCVN9ww79xSAjWhs1/7pyN43727Xoh4GGODA0BUV3dAmBMvxMQVgDPwi/Ylvj/YQ==",
       "files": [
         "ref/dotnet/_._",
-        "runtime.win7.System.Threading.4.0.11-beta-23326.nupkg",
-        "runtime.win7.System.Threading.4.0.11-beta-23326.nupkg.sha512",
+        "runtime.win7.System.Threading.4.0.11-beta-23409.nupkg",
+        "runtime.win7.System.Threading.4.0.11-beta-23409.nupkg.sha512",
         "runtime.win7.System.Threading.nuspec",
         "runtimes/win7/lib/DNXCore50/de/System.Threading.xml",
         "runtimes/win7/lib/DNXCore50/es/System.Threading.xml",
@@ -5313,9 +5313,9 @@
         "System.Reflection.Emit.ILGeneration.nuspec"
       ]
     },
-    "System.Reflection.Emit.Lightweight/4.0.0": {
+    "System.Reflection.Emit.Lightweight/4.0.0-beta-23109": {
       "type": "package",
-      "sha512": "DJZhHiOdkN08xJgsJfDjkuOreLLmMcU8qkEEqEHqyhkPUZMMQs0lE8R+6+68BAFWgcdzxtNu0YmIOtEug8j00w==",
+      "sha512": "Kbg03ijw7jZUswutleX/zmGgz6VYszTuyy4DciBn1PHFYAqAgZFZdK3cpYCsAU+cPliQ35UcOX828OsAG9NU4w==",
       "files": [
         "lib/DNXCore50/System.Reflection.Emit.Lightweight.dll",
         "lib/net45/_._",
@@ -5334,8 +5334,8 @@
         "ref/dotnet/zh-hant/System.Reflection.Emit.Lightweight.xml",
         "ref/net45/_._",
         "ref/wp80/_._",
-        "System.Reflection.Emit.Lightweight.4.0.0.nupkg",
-        "System.Reflection.Emit.Lightweight.4.0.0.nupkg.sha512",
+        "System.Reflection.Emit.Lightweight.4.0.0-beta-23109.nupkg",
+        "System.Reflection.Emit.Lightweight.4.0.0-beta-23109.nupkg.sha512",
         "System.Reflection.Emit.Lightweight.nuspec"
       ]
     },

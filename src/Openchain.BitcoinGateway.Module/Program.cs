@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Framework.Configuration;
-using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Logging;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NBitcoin;
 
 namespace Openchain.BitcoinGateway
@@ -16,7 +13,7 @@ namespace Openchain.BitcoinGateway
             ILogger logger = new LoggerFactory().AddConsole().CreateLogger("General");
 
             ServiceCollection services = new ServiceCollection();
-            IConfigurationBuilder builder = new ConfigurationBuilder(".").AddJsonFile("config.json");
+            IConfigurationBuilder builder = new ConfigurationBuilder().SetBasePath(".").AddJsonFile("config.json");
             IConfiguration config = builder.Build();
             
             IServiceProvider serviceProvider = services.BuildServiceProvider();

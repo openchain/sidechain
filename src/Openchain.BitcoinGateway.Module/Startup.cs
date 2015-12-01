@@ -22,9 +22,30 @@ namespace Openchain.BitcoinGateway.Module
             // Setup configuration
             services.AddSingleton<IConfiguration>(_ =>
                 new ConfigurationBuilder().SetBasePath(".").AddJsonFile("config.json").Build());
+
+            // Setup ASP.NET MVC
+            services
+                .AddMvcCore()
+                .AddViews()
+                .AddJsonFormatters();
+
+            // CORS Headers
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, ILogger logger, IConfiguration config)
+        {
+            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
+            app.UseIISPlatformHandler();
+
+            // Add MVC to the request pipeline.
+            app.UseMvc();
+
+            this.workers.Add(RunGateway(logger, config));
+        }
+
+        private async Task RunGateway(ILogger logger, IConfiguration config)
         {
             Key gatewayKey = Key.Parse(config["gateway_key"], Network.TestNet);
             Key storageKey = Key.Parse(config["storage_key"], Network.TestNet);
@@ -37,7 +58,7 @@ namespace Openchain.BitcoinGateway.Module
 
             logger.LogInformation("Starting gateway...");
 
-            workers.Add(gateway.OpenchainToBitcoin());
+            await gateway.OpenchainToBitcoin();
         }
     }
 }

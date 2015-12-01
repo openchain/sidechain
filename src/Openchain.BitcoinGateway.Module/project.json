@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.1.0-*",
+  "version": "0.1.1-rc1-*",
   "description": "Console application for the Bitcoin to Openchain gateway.",
   "authors": [ "Flavien Charlon" ],
   "owners": [ "Coinprism" ],
@@ -12,7 +12,7 @@
     "Microsoft.Framework.DependencyInjection": "1.0.0-*",
     "Microsoft.Framework.Configuration": "1.0.0-beta6",
     "Microsoft.Framework.Configuration.Json": "1.0.0-beta6",
-    "Openchain.BitcoinGateway": "0.1.0-*"
+    "Openchain.BitcoinGateway": "0.1.1-rc1-*"
   },
 
   "commands": {

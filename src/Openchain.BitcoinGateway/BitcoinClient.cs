@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using NBitcoin;
 using Newtonsoft.Json.Linq;
@@ -49,12 +50,33 @@ namespace Openchain.BitcoinGateway
 
                 HttpResponseMessage transactionResponse = await client.GetAsync(new Uri(url, $"transactions/{transactionHash}"));
                 JObject transaction = JObject.Parse(await transactionResponse.Content.ReadAsStringAsync());
-                string inboundAddress = (string)transaction["inputs"][0]["addresses"][0];
+                string target = (string)FindDestination(transaction);
 
-                result.Add(new InboundTransaction(transactionHash, outputIndex, null, amount, inboundAddress));
+                if (target != null)
+                    result.Add(new InboundTransaction(transactionHash, outputIndex, null, amount, target));
             }
 
             return result;
+        }
+
+        private string FindDestination(JObject transaction)
+        {
+            foreach (JObject output in transaction["outputs"])
+            {
+                ByteString script = ByteString.Parse((string)output["script"]);
+                Script parsedScript = new Script(script.ToByteArray());
+
+                foreach (Op opCode in parsedScript.ToOps())
+                {
+                    if (opCode.PushData != null && opCode.PushData.Length >= 2 && !opCode.IsInvalid)
+                    {
+                        if (opCode.PushData[0] == 'O' && opCode.PushData[1] == 'G')
+                            return Encoding.UTF8.GetString(opCode.PushData, 2, opCode.PushData.Length - 2);
+                    }
+                }
+            }
+
+            return null;
         }
 
         public async Task<ByteString> IssueWithdrawal(IList<OutboundTransaction> transactions)

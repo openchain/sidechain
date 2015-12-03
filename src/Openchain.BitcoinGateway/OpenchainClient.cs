@@ -86,7 +86,7 @@ namespace Openchain.BitcoinGateway
 
             string issuanceAccount = $"/asset/{assetName}/{transaction.TransactionHash}/{transaction.OutputIndex}/";
             string asset = $"/asset/{assetName}/";
-            string toAddress = $"/p2pkh/{transaction.Address}/";
+            string toAddress = transaction.Address;
 
             HttpClient client = new HttpClient();
             ByteString issuanceKey = Encode($"{issuanceAccount}:ACC:{asset}");

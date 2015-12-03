@@ -56,7 +56,8 @@ namespace Openchain.BitcoinGateway.Module
             // Add MVC to the request pipeline.
             app.UseMvc();
 
-            this.workers.Add(gateway.OpenchainToBitcoin());
+            //this.workers.Add(gateway.OpenchainToBitcoin());
+            this.workers.Add(gateway.BitcoinToOpenChain());
         }
     }
 }

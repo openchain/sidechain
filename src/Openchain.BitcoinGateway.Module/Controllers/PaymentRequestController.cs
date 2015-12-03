@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
+using NBitcoin;
 
 namespace Openchain.BitcoinGateway.Module.Controllers
 {
@@ -16,7 +17,7 @@ namespace Openchain.BitcoinGateway.Module.Controllers
         {
             this.logger = logger;
             this.gateway = gateway;
-            this.manager = new PaymentRequestManager(gateway.BitcoinClient.Network.Name == "Main", gateway.BitcoinClient.ReceivingAddress);
+            this.manager = new PaymentRequestManager(gateway.BitcoinClient.Network.Name == Network.Main.Name, gateway.BitcoinClient.ReceivingAddress);
         }
 
         [HttpGet("fund")]

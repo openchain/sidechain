@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using Bitcoin.PaymentProtocol;
 using Google.Protobuf;
@@ -33,7 +34,8 @@ namespace Openchain.BitcoinGateway
 
             Output dataOutput = new Output();
             dataOutput.Amount = dustValue;
-            dataOutput.Script = Google.Protobuf.ByteString.CopyFrom(Encoding.UTF8.GetBytes("OG" + finalAccount));
+            dataOutput.Script = Google.Protobuf.ByteString.CopyFrom(
+                new[] { (byte)OpcodeType.OP_RETURN }.Concat(Op.GetPushOp(Encoding.UTF8.GetBytes("OG" + finalAccount)).ToBytes()).ToArray());
 
             paymentDetails.Outputs.Add(paymentOutput);
             paymentDetails.Outputs.Add(dataOutput);

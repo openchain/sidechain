@@ -30,8 +30,15 @@ namespace Openchain.BitcoinGateway
 
                     foreach (InboundTransaction transaction in transactions)
                     {
-                        await OpenchainClient.AddAsset(transaction);
-                        await BitcoinClient.MoveToStorage(transaction);
+                        try
+                        {
+                            await OpenchainClient.AddAsset(transaction);
+                            await BitcoinClient.MoveToStorage(transaction);
+                        }
+                        catch (Exception exception)
+                        {
+                            this.logger.LogError($"An exception occurred: {exception.ToString()}");
+                        }
                     }
                 }
                 catch (Exception exception)

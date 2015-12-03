@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -43,7 +42,7 @@ namespace Openchain.BitcoinGateway
             HttpClient client = new HttpClient();
             JObject json = JObject.FromObject(new
             {
-                transaction = new ByteString(serializedMutation).ToString(),
+                mutation = new ByteString(serializedMutation).ToString(),
                 signatures = new[]
                 {
                     new
@@ -63,7 +62,7 @@ namespace Openchain.BitcoinGateway
         public async Task MoveToRedemption(IList<OutboundTransaction> transactions, ByteString btcTransaction)
         {
             List<Record> records = new List<Record>();
-            
+
             foreach (OutboundTransaction transaction in transactions)
             {
                 // TODO: Allow double spending
@@ -90,18 +89,19 @@ namespace Openchain.BitcoinGateway
 
             HttpClient client = new HttpClient();
             ByteString issuanceKey = Encode($"{issuanceAccount}:ACC:{asset}");
-            HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={issuanceKey.ToString()}"));
-            ByteString issuanceVersion = ByteString.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["version"]);
+            HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"record?key={issuanceKey.ToString()}"));
+            string stringResponse = await getValueResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
+            ByteString issuanceVersion = ByteString.Parse((string)JObject.Parse(stringResponse)["version"]);
 
             // The transaction has already been submitted
             if (issuanceVersion.Value.Count != 0)
                 return null;
 
             ByteString key = Encode($"{toAddress}:ACC:{asset}");
-            getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={key.ToString()}"));
-            JObject toAccount = JObject.Parse(await getValueResponse.Content.ReadAsStringAsync());
+            getValueResponse = await client.GetAsync(new Uri(openChainUri, $"record?key={key.ToString()}"));
+            JObject toAccount = JObject.Parse(await getValueResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync());
             ByteString version = ByteString.Parse((string)toAccount["version"]);
-            long currentToBalance = BitConverter.ToInt64(ByteString.Parse((string)toAccount["value"]).Value.Reverse().ToArray(), 0);
+            long currentToBalance = ParseInt(ByteString.Parse((string)toAccount["value"]));
 
             records.Add(new Record(
                 key: issuanceKey,
@@ -140,7 +140,7 @@ namespace Openchain.BitcoinGateway
                 Mutation mutation = await cache.GetMutation(currentVersion);
 
                 Record record = mutation.Records.FirstOrDefault(item => item.Key.Equals(key));
-                long balance = BitConverter.ToInt64(record.Value.Value.Reverse().ToArray(), 0);
+                long balance = ParseInt(record.Value);
 
                 long balanceChange;
                 if (record.Version.Equals(ByteString.Empty))
@@ -151,7 +151,7 @@ namespace Openchain.BitcoinGateway
                 {
                     Mutation previousMutation = await cache.GetMutation(record.Version);
                     Record previousRecord = mutation.Records.FirstOrDefault(item => item.Key.Equals(key));
-                    long previousBalance = BitConverter.ToInt64(previousRecord.Value.Value.Reverse().ToArray(), 0);
+                    long previousBalance = ParseInt(previousRecord.Value);
 
                     balanceChange = balance - previousBalance;
                 }
@@ -168,7 +168,7 @@ namespace Openchain.BitcoinGateway
                     string payingAddress = GetPayingAddress(mutation);
                     result.Add(new OutboundTransaction(payingAddress, null, balanceChange, currentVersion));
                 }
-                
+
                 currentVersion = record.Version;
             }
 
@@ -193,6 +193,14 @@ namespace Openchain.BitcoinGateway
             }
 
             return null;
+        }
+
+        private static long ParseInt(ByteString value)
+        {
+            if (value.Value.Count == 0)
+                return 0;
+            else
+                return BitConverter.ToInt64(value.Value.Reverse().ToArray(), 0);
         }
 
         private static ByteString Encode(string data)

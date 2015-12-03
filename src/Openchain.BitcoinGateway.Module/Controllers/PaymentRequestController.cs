@@ -31,7 +31,7 @@ namespace Openchain.BitcoinGateway.Module.Controllers
         public ActionResult Index()
         {
             return Content(
-                "<html><body><a href='bitcoin:?r=http%3A%2F%2F192.168.0.20%3A8080%2Ffund%3Faddress%3D%2Fp2pkh%2F1AY9qB6RJ5FRk2cyPCAjE6zK5NXVjYMbro%2F%26amount%3D150000'>Send</a></body></html>",
+                "<html><body><a href='bitcoin:?r=http%3A%2F%2F192.168.0.20%3A8080%2Ffund%3Faddress%3D%2Fp2pkh%2FXat6UaXpQE9Dxv6rLtxY1peBkzC1SQDiEX%2F%26amount%3D150000'>Send</a></body></html>",
                 MediaTypeHeaderValue.Parse("text/html"));
         }
     }

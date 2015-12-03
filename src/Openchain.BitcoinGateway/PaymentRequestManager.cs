@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Bitcoin.PaymentProtocol;
@@ -26,7 +28,6 @@ namespace Openchain.BitcoinGateway
             paymentDetails.Time = GetTimestamp(DateTime.UtcNow);
             paymentDetails.Expires = GetTimestamp(DateTime.UtcNow.AddHours(1));
             paymentDetails.Memo = $"Funding Openchain account {finalAccount}";
-            paymentDetails.PaymentUrl = "http://192.168.0.20:8080/payment";
 
             Output paymentOutput = new Output();
             paymentOutput.Amount = amount;

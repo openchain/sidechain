@@ -93,6 +93,7 @@ namespace Openchain.BitcoinGateway
             HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={issuanceKey.ToString()}"));
             ByteString issuanceVersion = ByteString.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["version"]);
 
+            // The transaction has already been submitted
             if (issuanceVersion.Value.Count != 0)
                 return null;
 

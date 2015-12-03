@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 
@@ -9,17 +10,18 @@ namespace Openchain.BitcoinGateway.Module.Controllers
     {
         private readonly ILogger logger;
         private readonly PegGateway gateway;
+        private readonly PaymentRequestManager manager;
 
         public PaymentRequestController(ILogger logger, PegGateway gateway)
         {
             this.logger = logger;
             this.gateway = gateway;
+            this.manager = new PaymentRequestManager(gateway.BitcoinClient.Network.Name == "Main", gateway.BitcoinClient.ReceivingAddress);
         }
 
         [HttpGet("fund")]
         public ActionResult Fund(string address, ulong amount)
         {
-            PaymentRequestManager manager = new PaymentRequestManager(gateway.BitcoinClient.Network.Name == "Mainnet", gateway.BitcoinClient.ReceivingAddress);
             ByteString request = manager.GetPaymentRequest(address, amount);
 
             return this.File(request.ToByteArray(), "application/bitcoin-paymentrequest");

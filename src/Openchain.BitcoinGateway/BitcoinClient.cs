@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -12,23 +11,29 @@ namespace Openchain.BitcoinGateway
     public class BitcoinClient
     {
         private readonly Uri url;
-        private readonly Key receivingKey;
         private readonly Key storageKey;
-        private readonly Network network;
+
         private readonly long defaultFees = 1000;
 
         public BitcoinClient(Uri url, Key receivingKey, Key storageKey, Network network)
         {
             this.url = url;
-            this.receivingKey = receivingKey;
+            this.ReceivingKey = receivingKey;
             this.storageKey = storageKey;
-            this.network = network;
+            this.Network = network;
+            this.ReceivingAddress = ReceivingKey.PubKey.GetAddress(Network).ToString();
         }
+
+        public Key ReceivingKey { get; }
+
+        public string ReceivingAddress { get; }
+
+        public Network Network { get; }
 
         public async Task<List<InboundTransaction>> GetUnspentOutputs()
         {
             HttpClient client = new HttpClient();
-            BitcoinAddress address = receivingKey.ScriptPubKey.GetDestinationAddress(this.network);
+            BitcoinAddress address = ReceivingKey.ScriptPubKey.GetDestinationAddress(this.Network);
             HttpResponseMessage response = await client.GetAsync(new Uri(url, $"addresses/{address.ToString()}/unspents"));
 
             string body = await response.Content.ReadAsStringAsync();
@@ -55,7 +60,7 @@ namespace Openchain.BitcoinGateway
         public async Task<ByteString> IssueWithdrawal(IList<OutboundTransaction> transactions)
         {
             HttpClient client = new HttpClient();
-            BitcoinAddress address = storageKey.ScriptPubKey.GetDestinationAddress(this.network);
+            BitcoinAddress address = storageKey.ScriptPubKey.GetDestinationAddress(this.Network);
             HttpResponseMessage response = await client.GetAsync(new Uri(url, $"addresses/{address.ToString()}/unspents"));
 
             string body = await response.Content.ReadAsStringAsync();
@@ -63,7 +68,7 @@ namespace Openchain.BitcoinGateway
             JArray outputs = JArray.Parse(body);
 
             TransactionBuilder builder = new TransactionBuilder();
-            builder.AddKeys(storageKey.GetBitcoinSecret(network));
+            builder.AddKeys(storageKey.GetBitcoinSecret(Network));
             foreach (JObject output in outputs)
             {
                 string transactionHash = (string)output["transaction_hash"];
@@ -75,7 +80,7 @@ namespace Openchain.BitcoinGateway
 
             foreach (OutboundTransaction outboundTransaction in transactions)
             {
-                builder.Send(BitcoinAddress.Create(outboundTransaction.Account, network).ScriptPubKey, new Money(outboundTransaction.Amount));
+                builder.Send(BitcoinAddress.Create(outboundTransaction.Account, Network).ScriptPubKey, new Money(outboundTransaction.Amount));
             }
 
             builder.SendFees(1000);
@@ -89,12 +94,12 @@ namespace Openchain.BitcoinGateway
         public async Task<string> MoveToStorage(InboundTransaction transaction)
         {
             NBitcoin.Transaction tx = new TransactionBuilder()
-                .AddKeys(receivingKey)
+                .AddKeys(ReceivingKey)
                 .AddCoins(new Coin(
                     uint256.Parse(transaction.TransactionHash),
                     (uint)transaction.OutputIndex,
                     transaction.Amount,
-                    receivingKey.ScriptPubKey))
+                    ReceivingKey.ScriptPubKey))
                 .Send(storageKey.ScriptPubKey, transaction.Amount - defaultFees)
                 .SendFees(defaultFees)
                 .BuildTransaction(true);

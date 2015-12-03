@@ -7,16 +7,18 @@ namespace Openchain.BitcoinGateway
 {
     public class PegGateway
     {
-        private readonly BitcoinClient bitcoinClient;
-        private readonly OpenchainClient openChainClient;
         private readonly ILogger logger;
 
         public PegGateway(BitcoinClient bitcoinClient, OpenchainClient openChainClient, ILogger logger)
         {
-            this.bitcoinClient = bitcoinClient;
-            this.openChainClient = openChainClient;
+            this.BitcoinClient = bitcoinClient;
+            this.OpenchainClient = openChainClient;
             this.logger = logger;
         }
+
+        public BitcoinClient BitcoinClient { get; }
+
+        public OpenchainClient OpenchainClient { get; }
 
         public async Task BitcoinToOpenChain()
         {
@@ -24,12 +26,12 @@ namespace Openchain.BitcoinGateway
             {
                 try
                 {
-                    IList<InboundTransaction> transactions = await this.bitcoinClient.GetUnspentOutputs();
+                    IList<InboundTransaction> transactions = await this.BitcoinClient.GetUnspentOutputs();
 
                     foreach (InboundTransaction transaction in transactions)
                     {
-                        await openChainClient.AddAsset(transaction);
-                        await bitcoinClient.MoveToStorage(transaction);
+                        await OpenchainClient.AddAsset(transaction);
+                        await BitcoinClient.MoveToStorage(transaction);
                     }
                 }
                 catch (Exception exception)
@@ -47,10 +49,10 @@ namespace Openchain.BitcoinGateway
             {
                 try
                 {
-                    IList<OutboundTransaction> transactions = await this.openChainClient.GetUnprocessedTransactions();
-                    ByteString withdrawalTransaction = await this.bitcoinClient.IssueWithdrawal(transactions);
-                    await this.openChainClient.MoveToRedemption(transactions, withdrawalTransaction);
-                    await this.bitcoinClient.SubmitTransaction(withdrawalTransaction);
+                    IList<OutboundTransaction> transactions = await this.OpenchainClient.GetUnprocessedTransactions();
+                    ByteString withdrawalTransaction = await this.BitcoinClient.IssueWithdrawal(transactions);
+                    await this.OpenchainClient.MoveToRedemption(transactions, withdrawalTransaction);
+                    await this.BitcoinClient.SubmitTransaction(withdrawalTransaction);
                 }
                 catch (Exception exception)
                 {

@@ -24,16 +24,30 @@ namespace Openchain.BitcoinGateway.Module
                 new ConfigurationBuilder().SetBasePath(".").AddJsonFile("config.json").Build());
 
             // Setup ASP.NET MVC
-            services
-                .AddMvcCore()
-                .AddViews()
-                .AddJsonFormatters();
+            services.AddMvcCore().AddViews();
 
             // CORS Headers
             services.AddCors();
+
+            // Other
+            services.AddInstance<PegGateway>(CreatePegGateway(services.BuildServiceProvider()));
         }
 
-        public void Configure(IApplicationBuilder app, ILogger logger, IConfiguration config)
+        private PegGateway CreatePegGateway(IServiceProvider serviceProvider)
+        {
+            IConfiguration config = serviceProvider.GetService<IConfiguration>();
+            ILogger logger = serviceProvider.GetService<ILogger>();
+
+            Key gatewayKey = Key.Parse(config["gateway_key"], Network.TestNet);
+            Key storageKey = Key.Parse(config["storage_key"], Network.TestNet);
+            
+            BitcoinClient bitcoinClient = new BitcoinClient(new Uri(config["bitcoin_api_url"]), gatewayKey, storageKey, Network.TestNet);
+            logger.LogInformation($"Initializing OC-Bitcoin-Gateway with address {bitcoinClient.ReceivingAddress}");
+            OpenchainClient openchain = new OpenchainClient(gatewayKey, "btc", new Uri(config["openchain_server"]));
+            return new PegGateway(bitcoinClient, openchain, logger);
+        }
+
+        public void Configure(IApplicationBuilder app, ILogger logger, IConfiguration config, PegGateway gateway)
         {
             app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 
@@ -42,23 +56,7 @@ namespace Openchain.BitcoinGateway.Module
             // Add MVC to the request pipeline.
             app.UseMvc();
 
-            this.workers.Add(RunGateway(logger, config));
-        }
-
-        private async Task RunGateway(ILogger logger, IConfiguration config)
-        {
-            Key gatewayKey = Key.Parse(config["gateway_key"], Network.TestNet);
-            Key storageKey = Key.Parse(config["storage_key"], Network.TestNet);
-
-            logger.LogInformation($"Initializing OC-Bitcoin-Gateway with address {gatewayKey.PubKey.GetAddress(Network.TestNet)}");
-
-            BitcoinClient bitcoin = new BitcoinClient(new Uri(config["bitcoin_api_url"]), gatewayKey, storageKey, Network.TestNet);
-            OpenchainClient openChain = new OpenchainClient(gatewayKey, "btc", new Uri(config["openchain_server"]));
-            PegGateway gateway = new PegGateway(bitcoin, openChain, logger);
-
-            logger.LogInformation("Starting gateway...");
-
-            await gateway.OpenchainToBitcoin();
+            this.workers.Add(gateway.OpenchainToBitcoin());
         }
     }
 }

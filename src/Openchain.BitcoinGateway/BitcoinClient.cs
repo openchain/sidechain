@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using NBitcoin;
 using Newtonsoft.Json.Linq;
 
@@ -13,14 +14,15 @@ namespace Openchain.BitcoinGateway
     {
         private readonly Uri url;
         private readonly Key storageKey;
-
+        private readonly ILogger logger;
         private readonly long defaultFees = 1000;
 
-        public BitcoinClient(Uri url, Key receivingKey, Key storageKey, Network network)
+        public BitcoinClient(Uri url, Key receivingKey, Key storageKey, Network network, ILogger logger)
         {
             this.url = url;
             this.ReceivingKey = receivingKey;
             this.storageKey = storageKey;
+            this.logger = logger;
             this.Network = network;
             this.ReceivingAddress = ReceivingKey.PubKey.GetAddress(Network).ToString();
         }

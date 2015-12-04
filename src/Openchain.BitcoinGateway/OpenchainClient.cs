@@ -6,6 +6,8 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using NBitcoin;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Openchain.BitcoinGateway
@@ -16,12 +18,14 @@ namespace Openchain.BitcoinGateway
         private readonly Uri openChainUri;
         private readonly string assetName;
         private readonly Regex accountRegex = new Regex("/p2pkh/(?<address>[a-zA-Z0-9]+)(/.*$)?", RegexOptions.Compiled);
+        private readonly Network network;
 
-        public OpenchainClient(NBitcoin.Key openChainKey, string assetName, Uri openChainUri)
+        public OpenchainClient(NBitcoin.Key openChainKey, string assetName, Uri openChainUri, Network network)
         {
             this.openChainKey = openChainKey;
             this.assetName = assetName;
             this.openChainUri = openChainUri;
+            this.network = network;
         }
 
         public async Task AddAsset(InboundTransaction transaction)
@@ -67,7 +71,7 @@ namespace Openchain.BitcoinGateway
             {
                 // TODO: Allow double spending
                 records.Add(new Record(
-                    key: Encode($"/asset/{assetName}/processed/{transaction.MutationHash.ToString()}:DATA"),
+                    key: Encode($"/asset/{assetName}/processed/:DATA:{transaction.MutationHash.ToString()}"),
                     value: Encode(JObject.FromObject(new { transactions = new[] { btcTransaction.ToString() } }).ToString()),
                     version: ByteString.Empty));
             }
@@ -128,7 +132,7 @@ namespace Openchain.BitcoinGateway
 
             HttpClient client = new HttpClient();
             ByteString key = Encode($"{account}:ACC:{asset}");
-            HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={key.ToString()}"));
+            HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"record?key={key.ToString()}"));
             ByteString currentVersion = ByteString.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["version"]);
 
             TransactionCache cache = new TransactionCache(openChainUri, assetName);
@@ -161,12 +165,13 @@ namespace Openchain.BitcoinGateway
 
                 ByteString spendingKey = Encode($"/assets/{assetName}/processed/{currentVersion.ToString()}/:DATA");
 
-                getValueResponse = await client.GetAsync(new Uri(openChainUri, $"value?key={spendingKey.ToString()}"));
-                ByteString processedValue = ByteString.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["value"]);
+                getValueResponse = await client.GetAsync(new Uri(openChainUri, $"record?key={spendingKey.ToString()}"));
+                ByteString processedValue = ByteString.Parse((string)JObject.Parse(await getValueResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync())["value"]);
                 if (processedValue.Equals(ByteString.Empty))
                 {
                     string payingAddress = GetPayingAddress(mutation);
-                    result.Add(new OutboundTransaction(payingAddress, null, balanceChange, currentVersion));
+                    if (payingAddress != null)
+                        result.Add(new OutboundTransaction(payingAddress, null, balanceChange, currentVersion));
                 }
 
                 currentVersion = record.Version;
@@ -177,22 +182,21 @@ namespace Openchain.BitcoinGateway
 
         private string GetPayingAddress(Mutation outgoingTransaction)
         {
-            string asset = $"/asset/{assetName}/";
-
-            foreach (Record record in outgoingTransaction.Records)
+            try
             {
-                string[] parts = Encoding.UTF8.GetString(record.Key.ToByteArray(), 0, record.Key.Value.Count).Split(':');
-                if (parts.Length == 3 && parts[1] == "ACC" && parts[2] == asset)
-                {
-                    Match match = accountRegex.Match(parts[0]);
-                    if (match.Success)
-                    {
-                        return match.Groups["address"].Value;
-                    }
-                }
-            }
+                string metadata = Encoding.UTF8.GetString(outgoingTransaction.Metadata.ToByteArray(), 0, outgoingTransaction.Metadata.Value.Count);
 
-            return null;
+                JObject root = JObject.Parse(metadata);
+                return BitcoinAddress.Create((string)root["routing"], network).ToString();
+            }
+            catch (JsonReaderException)
+            {
+                return null;
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
         }
 
         private static long ParseInt(ByteString value)
@@ -230,15 +234,14 @@ namespace Openchain.BitcoinGateway
                     string asset = $"/asset/{assetName}/";
 
                     HttpClient client = new HttpClient();
-                    ByteString key = new ByteString(Encoding.UTF8.GetBytes($"{account}:ACC:{asset}"));
 
-                    HttpResponseMessage getTransactionResponse = await client.GetAsync(new Uri(openChainUri, $"query/transaction?mutationHash={hash.ToString()}"));
-                    JToken rawTransaction = JToken.Parse(await getTransactionResponse.Content.ReadAsStringAsync());
+                    HttpResponseMessage getTransactionResponse = await client.GetAsync(new Uri(openChainUri, $"query/transaction?mutation_hash={hash.ToString()}"));
+                    JToken rawTransaction = JToken.Parse(await getTransactionResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync());
 
                     Transaction transaction = MessageSerializer.DeserializeTransaction(ByteString.Parse((string)rawTransaction["raw"]));
                     mutation = MessageSerializer.DeserializeMutation(transaction.Mutation);
 
-                    Transactions.Add(key, mutation);
+                    Transactions.Add(hash, mutation);
                 }
 
                 return mutation;

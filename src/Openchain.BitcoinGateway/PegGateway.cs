@@ -57,9 +57,14 @@ namespace Openchain.BitcoinGateway
                 try
                 {
                     IList<OutboundTransaction> transactions = await this.OpenchainClient.GetUnprocessedTransactions();
-                    ByteString withdrawalTransaction = await this.BitcoinClient.IssueWithdrawal(transactions);
-                    await this.OpenchainClient.MoveToRedemption(transactions, withdrawalTransaction);
-                    await this.BitcoinClient.SubmitTransaction(withdrawalTransaction);
+
+                    if (transactions.Count > 0)
+                    {
+                        ByteString withdrawalTransaction = await this.BitcoinClient.IssueWithdrawal(transactions);
+
+                        await this.OpenchainClient.MoveToRedemption(transactions, withdrawalTransaction);
+                        await this.BitcoinClient.SubmitTransaction(withdrawalTransaction);
+                    }
                 }
                 catch (Exception exception)
                 {

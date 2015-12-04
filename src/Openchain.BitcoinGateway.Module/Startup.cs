@@ -43,11 +43,11 @@ namespace Openchain.BitcoinGateway.Module
             Key gatewayKey = Key.Parse(config["gateway_key"], Network.TestNet);
             Key storageKey = Key.Parse(config["storage_key"], Network.TestNet);
 
-            BitcoinClient bitcoinClient = new BitcoinClient(new Uri(config["bitcoin_api_url"]), gatewayKey, storageKey, Network.TestNet);
+            BitcoinClient bitcoinClient = new BitcoinClient(new Uri(config["bitcoin_api_url"]), gatewayKey, storageKey, Network.TestNet, logger);
             logger.LogInformation($"Initializing OC-Bitcoin-Gateway with address {bitcoinClient.ReceivingAddress}");
             string gatewayAdminAddress = Encoders.Base58Check.EncodeData(new byte[] { 76 }.Concat(gatewayKey.PubKey.GetAddress(Network.Main).Hash.ToBytes()).ToArray());
             logger.LogInformation($"Openchain Gateway address: {gatewayAdminAddress}");
-            OpenchainClient openchain = new OpenchainClient(gatewayKey, "btc", new Uri(config["openchain_server"]));
+            OpenchainClient openchain = new OpenchainClient(gatewayKey, "btc", new Uri(config["openchain_server"]), Network.TestNet);
             return new PegGateway(bitcoinClient, openchain, logger);
         }
 
@@ -60,8 +60,8 @@ namespace Openchain.BitcoinGateway.Module
             // Add MVC to the request pipeline.
             app.UseMvc();
 
-            //this.workers.Add(gateway.OpenchainToBitcoin());
-            this.workers.Add(gateway.BitcoinToOpenChain());
+            this.workers.Add(gateway.OpenchainToBitcoin());
+            //this.workers.Add(gateway.BitcoinToOpenChain());
         }
     }
 }

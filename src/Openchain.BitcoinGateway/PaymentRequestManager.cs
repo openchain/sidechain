@@ -11,7 +11,7 @@ namespace Openchain.BitcoinGateway
 {
     public class PaymentRequestManager
     {
-        private readonly ulong dustValue = 1500;
+        private readonly ulong dustValue = 1000;
         private readonly bool isMainNet;
         private readonly BitcoinAddress destinationAddress;
 

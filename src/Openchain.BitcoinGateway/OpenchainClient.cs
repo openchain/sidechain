@@ -17,7 +17,6 @@ namespace Openchain.BitcoinGateway
         private readonly NBitcoin.Key openChainKey;
         private readonly Uri openChainUri;
         private readonly string assetName;
-        private readonly Regex accountRegex = new Regex("/p2pkh/(?<address>[a-zA-Z0-9]+)(/.*$)?", RegexOptions.Compiled);
         private readonly Network network;
 
         public OpenchainClient(NBitcoin.Key openChainKey, string assetName, Uri openChainUri, Network network)
@@ -71,10 +70,27 @@ namespace Openchain.BitcoinGateway
             {
                 // TODO: Allow double spending
                 records.Add(new Record(
-                    key: Encode($"/asset/{assetName}/processed/:DATA:{transaction.MutationHash.ToString()}"),
+                    key: Encode($"/asset/{assetName}/tx/:DATA:{transaction.Version.ToString()}"),
                     value: Encode(JObject.FromObject(new { transactions = new[] { btcTransaction.ToString() } }).ToString()),
                     version: ByteString.Empty));
+
+                records.Add(new Record(
+                    key: transaction.RecordKey,
+                    value: ByteString.Empty,
+                    version: transaction.Version));
             }
+
+            HttpClient client = new HttpClient();
+            ByteString finalKey = Encode($"/asset/{assetName}/final/:ACC:/asset/{assetName}/");
+            HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"record?key={finalKey.ToString()}"));
+            string stringResponse = await getValueResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
+            ByteString finalVersion = ByteString.Parse((string)JObject.Parse(stringResponse)["version"]);
+            long currentValue = ParseInt(ByteString.Parse((string)JObject.Parse(stringResponse)["value"]));
+
+            records.Add(new Record(
+                key: finalKey,
+                value: Encode(currentValue + transactions.Sum(transaction => transaction.Amount)),
+                version: finalVersion));
 
             Mutation mutation = new Mutation(Encode(this.openChainUri.ToString()), records, ByteString.Empty);
 
@@ -87,7 +103,7 @@ namespace Openchain.BitcoinGateway
         {
             List<Record> records = new List<Record>();
 
-            string issuanceAccount = $"/asset/{assetName}/{transaction.TransactionHash}/{transaction.OutputIndex}/";
+            string issuanceAccount = $"/asset/{assetName}/in/{transaction.TransactionHash}/{transaction.OutputIndex}/";
             string asset = $"/asset/{assetName}/";
             string toAddress = transaction.Address;
 
@@ -131,50 +147,31 @@ namespace Openchain.BitcoinGateway
             string asset = $"/asset/{assetName}/";
 
             HttpClient client = new HttpClient();
-            ByteString key = Encode($"{account}:ACC:{asset}");
-            HttpResponseMessage getValueResponse = await client.GetAsync(new Uri(openChainUri, $"record?key={key.ToString()}"));
-            ByteString currentVersion = ByteString.Parse((string)JObject.Parse(await getValueResponse.Content.ReadAsStringAsync())["version"]);
+            HttpResponseMessage accountsResponse = await client.GetAsync(new Uri(openChainUri, $"query/subaccounts?account={account}"));
 
-            TransactionCache cache = new TransactionCache(openChainUri, assetName);
+            JArray records = JArray.Parse(await accountsResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync());
 
             List<OutboundTransaction> result = new List<OutboundTransaction>();
 
-            while (!currentVersion.Equals(ByteString.Empty))
+            foreach (JObject record in records)
             {
-                Mutation mutation = await cache.GetMutation(currentVersion);
+                ByteString mutationHash = ByteString.Parse((string)record["version"]);
+                HttpResponseMessage transactionResponse = await client.GetAsync(new Uri(openChainUri, $"query/transaction?mutation_hash={mutationHash}"));
 
-                Record record = mutation.Records.FirstOrDefault(item => item.Key.Equals(key));
-                long balance = ParseInt(record.Value);
+                JObject rawTransaction = JObject.Parse(await transactionResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync());
 
-                long balanceChange;
-                if (record.Version.Equals(ByteString.Empty))
+                Transaction transaction = MessageSerializer.DeserializeTransaction(ByteString.Parse((string)rawTransaction["raw"]));
+                Mutation mutation = MessageSerializer.DeserializeMutation(transaction.Mutation);
+
+                // TODO: Validate that the record mutation has an empty version
+
+                string target = GetPayingAddress(mutation);
+                if (target != null)
                 {
-                    balanceChange = balance;
+                    long value = ParseInt(ByteString.Parse((string)record["value"]));
+
+                    result.Add(new OutboundTransaction(ByteString.Parse((string)record["key"]), value, mutationHash, target));
                 }
-                else
-                {
-                    Mutation previousMutation = await cache.GetMutation(record.Version);
-                    Record previousRecord = mutation.Records.FirstOrDefault(item => item.Key.Equals(key));
-                    long previousBalance = ParseInt(previousRecord.Value);
-
-                    balanceChange = balance - previousBalance;
-                }
-
-                if (balanceChange < 0)
-                    continue;
-
-                ByteString spendingKey = Encode($"/assets/{assetName}/processed/{currentVersion.ToString()}/:DATA");
-
-                getValueResponse = await client.GetAsync(new Uri(openChainUri, $"record?key={spendingKey.ToString()}"));
-                ByteString processedValue = ByteString.Parse((string)JObject.Parse(await getValueResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync())["value"]);
-                if (processedValue.Equals(ByteString.Empty))
-                {
-                    string payingAddress = GetPayingAddress(mutation);
-                    if (payingAddress != null)
-                        result.Add(new OutboundTransaction(payingAddress, null, balanceChange, currentVersion));
-                }
-
-                currentVersion = record.Version;
             }
 
             return result;
@@ -210,6 +207,11 @@ namespace Openchain.BitcoinGateway
         private static ByteString Encode(string data)
         {
             return new ByteString(Encoding.UTF8.GetBytes(data));
+        }
+
+        private static ByteString Encode(long data)
+        {
+            return new ByteString(BitConverter.GetBytes(data).Reverse());
         }
 
         private class TransactionCache

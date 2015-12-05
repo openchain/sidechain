@@ -15,7 +15,7 @@ namespace Openchain.BitcoinGateway
         private readonly Uri url;
         private readonly Key storageKey;
         private readonly ILogger logger;
-        private readonly long defaultFees = 1000;
+        private readonly long defaultFees = 5000;
 
         public BitcoinClient(Uri url, Key receivingKey, Key storageKey, Network network, ILogger logger)
         {
@@ -104,10 +104,10 @@ namespace Openchain.BitcoinGateway
 
             foreach (OutboundTransaction outboundTransaction in transactions)
             {
-                builder.Send(BitcoinAddress.Create(outboundTransaction.Account, Network).ScriptPubKey, new Money(outboundTransaction.Amount));
+                builder.Send(BitcoinAddress.Create(outboundTransaction.Target, Network).ScriptPubKey, new Money(outboundTransaction.Amount));
             }
 
-            builder.SendFees(1000);
+            builder.SendFees(defaultFees);
             builder.SetChange(storageKey.ScriptPubKey, ChangeType.All);
 
             NBitcoin.Transaction transaction = builder.BuildTransaction(true);

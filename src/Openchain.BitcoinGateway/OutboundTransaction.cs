@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Openchain.BitcoinGateway
+﻿namespace Openchain.BitcoinGateway
 {
     public class OutboundTransaction
     {
-        public OutboundTransaction(string account, string asset, long amount, ByteString mutationHash)
+        public OutboundTransaction(ByteString recordKey, long amount, ByteString version, string target)
         {
-            this.Account = account;
-            this.Asset = asset; 
+            this.RecordKey = recordKey;
             this.Amount = amount;
-            this.MutationHash = mutationHash;
+            this.Version = version;
+            this.Target = target;
         }
 
-        public string Account { get; }
+        public ByteString RecordKey { get; }
 
-        public ByteString MutationHash { get; }
-
-        public string Asset { get; }
+        public ByteString Version { get; }
 
         public long Amount { get; }
+
+        public string Target { get; }
     }
 }

@@ -956,6 +956,7 @@
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
           "Openchain.Abstractions": "0.4.4",
+          "Openchain.Ledger": "0.4.4",
           "System.Collections": "4.0.11-beta-23516",
           "System.Globalization": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
@@ -965,6 +966,50 @@
           "System.Runtime.Extensions": "4.0.11-beta-23516",
           "System.Runtime.Numerics": "4.0.1-beta-23516",
           "System.Text.RegularExpressions": "4.0.11-beta-23516"
+        }
+      },
+      "Openchain.Ledger/0.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "Openchain.Abstractions": "0.4.4",
+          "Portable.BouncyCastle": "1.8.0",
+          "System.Dynamic.Runtime": "4.0.11-beta-23516",
+          "System.ObjectModel": "4.0.11-beta-23516",
+          "System.Runtime.Numerics": "4.0.1-beta-23516",
+          "System.Text.Encoding": "4.0.11-beta-23516",
+          "System.Text.RegularExpressions": "4.0.11-beta-23516"
+        },
+        "compile": {
+          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Diagnostics.Debug": "4.0.10",
+          "System.Globalization": "4.0.10",
+          "System.IO": "4.0.10",
+          "System.IO.FileSystem": "4.0.0",
+          "System.IO.FileSystem.Primitives": "4.0.0",
+          "System.Linq": "4.0.0",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Text.Encoding": "4.0.10",
+          "System.Threading": "4.0.10",
+          "System.Threading.Tasks": "4.0.10"
+        },
+        "compile": {
+          "lib/dotnet/crypto.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/crypto.dll": {}
         }
       },
       "System.AppContext/4.0.0": {
@@ -1348,7 +1393,7 @@
           "lib/dotnet5.4/System.Numerics.Vectors.dll": {}
         }
       },
-      "System.ObjectModel/4.0.10": {
+      "System.ObjectModel/4.0.11-beta-23516": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -1358,10 +1403,10 @@
           "System.Threading": "4.0.10"
         },
         "compile": {
-          "ref/dotnet/System.ObjectModel.dll": {}
+          "ref/dotnet5.4/System.ObjectModel.dll": {}
         },
         "runtime": {
-          "lib/dotnet/System.ObjectModel.dll": {}
+          "lib/dotnet5.4/System.ObjectModel.dll": {}
         }
       },
       "System.Private.Uri/4.0.1-beta-23516": {
@@ -2796,7 +2841,7 @@
       },
       "Openchain.BitcoinGateway/0.1.1-rc1": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.2",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "Google.Protobuf": "3.0.0",
           "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -2804,11 +2849,43 @@
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
           "Openchain.Abstractions": "0.4.4",
+          "Openchain.Ledger": "0.4.4",
           "System.Net.Http": "4.0.1-beta-23516"
         },
         "frameworkAssemblies": [
           "System.Numerics"
         ]
+      },
+      "Openchain.Ledger/0.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "Openchain.Abstractions": "0.4.4",
+          "Portable.BouncyCastle": "1.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "System.IO",
+          "System.Numerics"
+        ],
+        "compile": {
+          "lib/net451/Openchain.Ledger.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Openchain.Ledger.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/crypto.dll": {}
+        },
+        "runtime": {
+          "lib/net45/crypto.dll": {}
+        }
       },
       "protobuf-net/2.0.0.668": {
         "type": "package",
@@ -3839,6 +3916,7 @@
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
           "Openchain.Abstractions": "0.4.4",
+          "Openchain.Ledger": "0.4.4",
           "System.Collections": "4.0.11-beta-23516",
           "System.Globalization": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
@@ -3848,6 +3926,50 @@
           "System.Runtime.Extensions": "4.0.11-beta-23516",
           "System.Runtime.Numerics": "4.0.1-beta-23516",
           "System.Text.RegularExpressions": "4.0.11-beta-23516"
+        }
+      },
+      "Openchain.Ledger/0.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "Openchain.Abstractions": "0.4.4",
+          "Portable.BouncyCastle": "1.8.0",
+          "System.Dynamic.Runtime": "4.0.11-beta-23516",
+          "System.ObjectModel": "4.0.11-beta-23516",
+          "System.Runtime.Numerics": "4.0.1-beta-23516",
+          "System.Text.Encoding": "4.0.11-beta-23516",
+          "System.Text.RegularExpressions": "4.0.11-beta-23516"
+        },
+        "compile": {
+          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Diagnostics.Debug": "4.0.10",
+          "System.Globalization": "4.0.10",
+          "System.IO": "4.0.10",
+          "System.IO.FileSystem": "4.0.0",
+          "System.IO.FileSystem.Primitives": "4.0.0",
+          "System.Linq": "4.0.0",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Text.Encoding": "4.0.10",
+          "System.Threading": "4.0.10",
+          "System.Threading.Tasks": "4.0.10"
+        },
+        "compile": {
+          "lib/dotnet/crypto.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/crypto.dll": {}
         }
       },
       "runtime.any.System.Linq.Expressions/4.0.11-beta-23516": {
@@ -4566,7 +4688,7 @@
           "lib/dotnet5.4/System.Numerics.Vectors.dll": {}
         }
       },
-      "System.ObjectModel/4.0.10": {
+      "System.ObjectModel/4.0.11-beta-23516": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -4576,10 +4698,10 @@
           "System.Threading": "4.0.10"
         },
         "compile": {
-          "ref/dotnet/System.ObjectModel.dll": {}
+          "ref/dotnet5.4/System.ObjectModel.dll": {}
         },
         "runtime": {
-          "lib/dotnet/System.ObjectModel.dll": {}
+          "lib/dotnet5.4/System.ObjectModel.dll": {}
         }
       },
       "System.Private.Networking/4.0.1-beta-23516": {
@@ -6079,6 +6201,7 @@
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
           "Openchain.Abstractions": "0.4.4",
+          "Openchain.Ledger": "0.4.4",
           "System.Collections": "4.0.11-beta-23516",
           "System.Globalization": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
@@ -6088,6 +6211,50 @@
           "System.Runtime.Extensions": "4.0.11-beta-23516",
           "System.Runtime.Numerics": "4.0.1-beta-23516",
           "System.Text.RegularExpressions": "4.0.11-beta-23516"
+        }
+      },
+      "Openchain.Ledger/0.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "Openchain.Abstractions": "0.4.4",
+          "Portable.BouncyCastle": "1.8.0",
+          "System.Dynamic.Runtime": "4.0.11-beta-23516",
+          "System.ObjectModel": "4.0.11-beta-23516",
+          "System.Runtime.Numerics": "4.0.1-beta-23516",
+          "System.Text.Encoding": "4.0.11-beta-23516",
+          "System.Text.RegularExpressions": "4.0.11-beta-23516"
+        },
+        "compile": {
+          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.10",
+          "System.Diagnostics.Debug": "4.0.10",
+          "System.Globalization": "4.0.10",
+          "System.IO": "4.0.10",
+          "System.IO.FileSystem": "4.0.0",
+          "System.IO.FileSystem.Primitives": "4.0.0",
+          "System.Linq": "4.0.0",
+          "System.Reflection": "4.0.10",
+          "System.Reflection.Extensions": "4.0.0",
+          "System.Runtime": "4.0.20",
+          "System.Runtime.Extensions": "4.0.10",
+          "System.Text.Encoding": "4.0.10",
+          "System.Threading": "4.0.10",
+          "System.Threading.Tasks": "4.0.10"
+        },
+        "compile": {
+          "lib/dotnet/crypto.dll": {}
+        },
+        "runtime": {
+          "lib/dotnet/crypto.dll": {}
         }
       },
       "runtime.any.System.Linq.Expressions/4.0.11-beta-23516": {
@@ -6806,7 +6973,7 @@
           "lib/dotnet5.4/System.Numerics.Vectors.dll": {}
         }
       },
-      "System.ObjectModel/4.0.10": {
+      "System.ObjectModel/4.0.11-beta-23516": {
         "type": "package",
         "dependencies": {
           "System.Collections": "4.0.10",
@@ -6816,10 +6983,10 @@
           "System.Threading": "4.0.10"
         },
         "compile": {
-          "ref/dotnet/System.ObjectModel.dll": {}
+          "ref/dotnet5.4/System.ObjectModel.dll": {}
         },
         "runtime": {
-          "lib/dotnet/System.ObjectModel.dll": {}
+          "lib/dotnet5.4/System.ObjectModel.dll": {}
         }
       },
       "System.Private.Networking/4.0.1-beta-23516": {
@@ -8360,7 +8527,7 @@
       },
       "Openchain.BitcoinGateway/0.1.1-rc1": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.2",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "Google.Protobuf": "3.0.0",
           "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -8368,11 +8535,43 @@
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
           "Openchain.Abstractions": "0.4.4",
+          "Openchain.Ledger": "0.4.4",
           "System.Net.Http": "4.0.1-beta-23516"
         },
         "frameworkAssemblies": [
           "System.Numerics"
         ]
+      },
+      "Openchain.Ledger/0.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "Openchain.Abstractions": "0.4.4",
+          "Portable.BouncyCastle": "1.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "System.IO",
+          "System.Numerics"
+        ],
+        "compile": {
+          "lib/net451/Openchain.Ledger.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Openchain.Ledger.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/crypto.dll": {}
+        },
+        "runtime": {
+          "lib/net45/crypto.dll": {}
+        }
       },
       "protobuf-net/2.0.0.668": {
         "type": "package",
@@ -9450,7 +9649,7 @@
       },
       "Openchain.BitcoinGateway/0.1.1-rc1": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.5.2",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "Google.Protobuf": "3.0.0",
           "Microsoft.CSharp": "4.0.1-beta-23516",
@@ -9458,11 +9657,43 @@
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
           "Openchain.Abstractions": "0.4.4",
+          "Openchain.Ledger": "0.4.4",
           "System.Net.Http": "4.0.1-beta-23516"
         },
         "frameworkAssemblies": [
           "System.Numerics"
         ]
+      },
+      "Openchain.Ledger/0.4.4": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "7.0.1",
+          "Openchain.Abstractions": "0.4.4",
+          "Portable.BouncyCastle": "1.8.0"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "System.IO",
+          "System.Numerics"
+        ],
+        "compile": {
+          "lib/net451/Openchain.Ledger.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Openchain.Ledger.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.8.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/crypto.dll": {}
+        },
+        "runtime": {
+          "lib/net45/crypto.dll": {}
+        }
       },
       "protobuf-net/2.0.0.668": {
         "type": "package",
@@ -10474,6 +10705,65 @@
         "Openchain.Abstractions.0.4.4.nupkg",
         "Openchain.Abstractions.0.4.4.nupkg.sha512",
         "Openchain.Abstractions.nuspec"
+      ]
+    },
+    "Openchain.Ledger/0.4.4": {
+      "type": "package",
+      "sha512": "+77yUA4TwdFfCHC4028weavzSDJqdVQkrGSVxTP8zYujiF7SRgEAyWRvN1JMfz6a23OaIbiznvhExNs+wFLAPQ==",
+      "files": [
+        "lib/dotnet5.4/Openchain.Ledger.dll",
+        "lib/dotnet5.4/Openchain.Ledger.xml",
+        "lib/net451/Openchain.Ledger.dll",
+        "lib/net451/Openchain.Ledger.xml",
+        "Openchain.Ledger.0.4.4.nupkg",
+        "Openchain.Ledger.0.4.4.nupkg.sha512",
+        "Openchain.Ledger.nuspec"
+      ]
+    },
+    "Portable.BouncyCastle/1.8.0": {
+      "type": "package",
+      "sha512": "MqzBSMh7/aKcQGsJlcLT8WjApuojJMb7fKbL9ZMt4vNyMOppKcdzw5v76oRRTykQqZrDDtGUI6tXt+8+3fqCKA==",
+      "files": [
+        "lib/dotnet/crypto.dll",
+        "lib/dotnet/crypto.pdb",
+        "lib/dotnet/crypto.xml",
+        "lib/MonoAndroid/crypto.dll",
+        "lib/MonoAndroid/crypto.pdb",
+        "lib/MonoAndroid/crypto.xml",
+        "lib/MonoTouch/crypto.dll",
+        "lib/MonoTouch/crypto.pdb",
+        "lib/MonoTouch/crypto.xml",
+        "lib/net45/crypto.dll",
+        "lib/net45/crypto.pdb",
+        "lib/net45/crypto.xml",
+        "lib/net46/crypto.dll",
+        "lib/net46/crypto.pdb",
+        "lib/net46/crypto.xml",
+        "lib/portable-net4+sl5+wp8+win8+wpa81+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10/crypto.dll",
+        "lib/portable-net4+sl5+wp8+win8+wpa81+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10/crypto.pdb",
+        "lib/portable-net4+sl5+wp8+win8+wpa81+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10/crypto.xml",
+        "lib/portable-net45+win8+wpa81+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10/crypto.dll",
+        "lib/portable-net45+win8+wpa81+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10/crypto.pdb",
+        "lib/portable-net45+win8+wpa81+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10/crypto.xml",
+        "lib/uap10.0/crypto.dll",
+        "lib/uap10.0/crypto.pdb",
+        "lib/uap10.0/crypto.xml",
+        "lib/win8/crypto.dll",
+        "lib/win8/crypto.pdb",
+        "lib/win8/crypto.xml",
+        "lib/wpa81/crypto.dll",
+        "lib/wpa81/crypto.pdb",
+        "lib/wpa81/crypto.xml",
+        "lib/XamarinIos/crypto.dll",
+        "lib/XamarinIos/crypto.pdb",
+        "lib/XamarinIos/crypto.xml",
+        "lib/XamarinMac/crypto.dll",
+        "lib/XamarinMac/crypto.pdb",
+        "lib/XamarinMac/crypto.xml",
+        "Portable.BouncyCastle.1.8.0.nupkg",
+        "Portable.BouncyCastle.1.8.0.nupkg.sha512",
+        "Portable.BouncyCastle.nuspec",
+        "Readme.html"
       ]
     },
     "protobuf-net/2.0.0.668": {
@@ -12158,35 +12448,64 @@
         "System.Numerics.Vectors.nuspec"
       ]
     },
-    "System.ObjectModel/4.0.10": {
+    "System.ObjectModel/4.0.11-beta-23516": {
       "type": "package",
       "serviceable": true,
-      "sha512": "Djn1wb0vP662zxbe+c3mOhvC4vkQGicsFs1Wi0/GJJpp3Eqp+oxbJ+p2Sx3O0efYueggAI5SW+BqEoczjfr1cA==",
+      "sha512": "ghz+BpjLqyroULvDb+tJ644TIULVWJ8VgriNn6hWSEdObWEh3BWYRIeq+D2poz3v2KP5x3NUqpaL4mFA5FlSiA==",
       "files": [
-        "lib/dotnet/System.ObjectModel.dll",
+        "lib/dotnet5.4/System.ObjectModel.dll",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
-        "lib/net46/_._",
+        "lib/net45/_._",
+        "lib/netcore50/System.ObjectModel.dll",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
-        "ref/dotnet/de/System.ObjectModel.xml",
-        "ref/dotnet/es/System.ObjectModel.xml",
-        "ref/dotnet/fr/System.ObjectModel.xml",
-        "ref/dotnet/it/System.ObjectModel.xml",
-        "ref/dotnet/ja/System.ObjectModel.xml",
-        "ref/dotnet/ko/System.ObjectModel.xml",
-        "ref/dotnet/ru/System.ObjectModel.xml",
-        "ref/dotnet/System.ObjectModel.dll",
-        "ref/dotnet/System.ObjectModel.xml",
-        "ref/dotnet/zh-hans/System.ObjectModel.xml",
-        "ref/dotnet/zh-hant/System.ObjectModel.xml",
+        "ref/dotnet5.1/de/System.ObjectModel.xml",
+        "ref/dotnet5.1/es/System.ObjectModel.xml",
+        "ref/dotnet5.1/fr/System.ObjectModel.xml",
+        "ref/dotnet5.1/it/System.ObjectModel.xml",
+        "ref/dotnet5.1/ja/System.ObjectModel.xml",
+        "ref/dotnet5.1/ko/System.ObjectModel.xml",
+        "ref/dotnet5.1/ru/System.ObjectModel.xml",
+        "ref/dotnet5.1/System.ObjectModel.dll",
+        "ref/dotnet5.1/System.ObjectModel.xml",
+        "ref/dotnet5.1/zh-hans/System.ObjectModel.xml",
+        "ref/dotnet5.1/zh-hant/System.ObjectModel.xml",
+        "ref/dotnet5.4/de/System.ObjectModel.xml",
+        "ref/dotnet5.4/es/System.ObjectModel.xml",
+        "ref/dotnet5.4/fr/System.ObjectModel.xml",
+        "ref/dotnet5.4/it/System.ObjectModel.xml",
+        "ref/dotnet5.4/ja/System.ObjectModel.xml",
+        "ref/dotnet5.4/ko/System.ObjectModel.xml",
+        "ref/dotnet5.4/ru/System.ObjectModel.xml",
+        "ref/dotnet5.4/System.ObjectModel.dll",
+        "ref/dotnet5.4/System.ObjectModel.xml",
+        "ref/dotnet5.4/zh-hans/System.ObjectModel.xml",
+        "ref/dotnet5.4/zh-hant/System.ObjectModel.xml",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
-        "ref/net46/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.ObjectModel.xml",
+        "ref/netcore50/es/System.ObjectModel.xml",
+        "ref/netcore50/fr/System.ObjectModel.xml",
+        "ref/netcore50/it/System.ObjectModel.xml",
+        "ref/netcore50/ja/System.ObjectModel.xml",
+        "ref/netcore50/ko/System.ObjectModel.xml",
+        "ref/netcore50/ru/System.ObjectModel.xml",
+        "ref/netcore50/System.ObjectModel.dll",
+        "ref/netcore50/System.ObjectModel.xml",
+        "ref/netcore50/zh-hans/System.ObjectModel.xml",
+        "ref/netcore50/zh-hant/System.ObjectModel.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
-        "System.ObjectModel.4.0.10.nupkg",
-        "System.ObjectModel.4.0.10.nupkg.sha512",
+        "System.ObjectModel.4.0.11-beta-23516.nupkg",
+        "System.ObjectModel.4.0.11-beta-23516.nupkg.sha512",
         "System.ObjectModel.nuspec"
       ]
     },

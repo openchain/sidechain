@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -82,12 +83,17 @@ namespace Openchain.BitcoinGateway
                 ByteString script = ByteString.Parse((string)output["script"]);
                 Script parsedScript = new Script(script.ToByteArray());
 
-                foreach (Op opCode in parsedScript.ToOps())
+                Op firstOpCode = parsedScript.ToOps().FirstOrDefault();
+
+                if (parsedScript.ToOps() != null && firstOpCode.Code == OpcodeType.OP_RETURN)
                 {
-                    if (opCode.PushData != null && opCode.PushData.Length >= 2 && !opCode.IsInvalid)
+                    foreach (Op opCode in parsedScript.ToOps())
                     {
-                        if (opCode.PushData[0] == 'O' && opCode.PushData[1] == 'G')
-                            return Encoding.UTF8.GetString(opCode.PushData, 2, opCode.PushData.Length - 2);
+                        if (opCode.PushData != null && opCode.PushData.Length >= 2 && !opCode.IsInvalid)
+                        {
+                            if (opCode.PushData[0] == 'O' && opCode.PushData[1] == 'G')
+                                return Encoding.UTF8.GetString(opCode.PushData, 2, opCode.PushData.Length - 2);
+                        }
                     }
                 }
             }

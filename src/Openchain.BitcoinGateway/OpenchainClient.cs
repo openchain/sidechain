@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using NBitcoin;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Openchain.Ledger;
 
 namespace Openchain.BitcoinGateway
 {
@@ -170,6 +171,12 @@ namespace Openchain.BitcoinGateway
             foreach (JObject record in records)
             {
                 ByteString mutationHash = ByteString.Parse((string)record["version"]);
+                ByteString key = ByteString.Parse((string)record["key"]);
+                RecordKey recordKey = RecordKey.Parse(key);
+
+                if (recordKey.RecordType != RecordType.Account || recordKey.Name != $"/asset/{assetName}/")
+                    continue;
+
                 HttpResponseMessage transactionResponse = await client.GetAsync(new Uri(openChainUri, $"query/transaction?mutation_hash={mutationHash}"));
 
                 JObject rawTransaction = JObject.Parse(await transactionResponse.EnsureSuccessStatusCode().Content.ReadAsStringAsync());
@@ -184,7 +191,7 @@ namespace Openchain.BitcoinGateway
                 {
                     long value = ParseInt(ByteString.Parse((string)record["value"]));
 
-                    result.Add(new OutboundTransaction(ByteString.Parse((string)record["key"]), value, mutationHash, target));
+                    result.Add(new OutboundTransaction(key, value, mutationHash, target));
                 }
             }
 

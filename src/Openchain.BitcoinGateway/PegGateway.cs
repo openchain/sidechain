@@ -60,7 +60,7 @@ namespace Openchain.BitcoinGateway
                     this.logger.LogError($"An exception occurred: {exception.ToString()}");
                 }
 
-                await Task.Delay(TimeSpan.FromMinutes(0.25));
+                await Task.Delay(TimeSpan.FromSeconds(5));
             }
         }
 
@@ -85,7 +85,7 @@ namespace Openchain.BitcoinGateway
                     this.logger.LogError($"An exception occurred: {exception.ToString()}");
                 }
 
-                await Task.Delay(TimeSpan.FromMinutes(0.25));
+                await Task.Delay(TimeSpan.FromSeconds(5));
             }
         }
     }

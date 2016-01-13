@@ -50,15 +50,15 @@ namespace Bitcoin.PaymentProtocol {
             "UGF5bWVudEFDSxIiCgdwYXltZW50GAEgASgLMhEucGF5bWVudHMuUGF5bWVu", 
             "dBIMCgRtZW1vGAIgASgJQigKHm9yZy5iaXRjb2luLnByb3RvY29scy5wYXlt", 
             "ZW50c0IGUHJvdG9zYgZwcm90bzM="));
-      descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
+      descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(null, new pbr::GeneratedCodeInfo[] {
-            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.Output), new[]{ "Amount", "Script" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.PaymentDetails), new[]{ "Network", "Outputs", "Time", "Expires", "Memo", "PaymentUrl", "MerchantData" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.PaymentRequest), new[]{ "PaymentDetailsVersion", "PkiType", "PkiData", "SerializedPaymentDetails", "Signature" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.X509Certificates), new[]{ "Certificate" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.Payment), new[]{ "MerchantData", "Transactions", "RefundTo", "Memo" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.PaymentACK), new[]{ "Payment", "Memo" }, null, null, null)
+            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.Output), Output.Parser, new[]{ "Amount", "Script" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.PaymentDetails), PaymentDetails.Parser, new[]{ "Network", "Outputs", "Time", "Expires", "Memo", "PaymentUrl", "MerchantData" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.PaymentRequest), PaymentRequest.Parser, new[]{ "PaymentDetailsVersion", "PkiType", "PkiData", "SerializedPaymentDetails", "Signature" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.X509Certificates), X509Certificates.Parser, new[]{ "Certificate" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.Payment), Payment.Parser, new[]{ "MerchantData", "Transactions", "RefundTo", "Memo" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Bitcoin.PaymentProtocol.PaymentACK), PaymentACK.Parser, new[]{ "Payment", "Memo" }, null, null, null)
           }));
     }
     #endregion

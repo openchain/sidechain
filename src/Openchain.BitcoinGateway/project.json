@@ -14,8 +14,7 @@
     "NBitcoin": "2.1.4.6",
     "System.Net.Http": "4.0.1-beta-23516",
     "Newtonsoft.Json": "7.0.1",
-    "Openchain.Abstractions": "0.4.4",
-    "Openchain.Ledger": "0.4.4",
+    "Openchain.Infrastructure": "0.5.0",
     "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-final"
   },
 

@@ -18,12 +18,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using NBitcoin;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Openchain.Ledger;
+using Openchain.Infrastructure;
 
 namespace Openchain.BitcoinGateway
 {

@@ -3,13 +3,27 @@
   "version": 2,
   "targets": {
     "DNXCore,Version=v5.0": {
-      "Google.Protobuf/3.0.0-alpha4": {
+      "Google.Protobuf/3.0.0-beta2": {
         "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.0",
+          "System.Globalization": "4.0.0",
+          "System.IO": "4.0.0",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.0",
+          "System.ObjectModel": "4.0.0",
+          "System.Reflection": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Runtime.Extensions": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Text.RegularExpressions": "4.0.0"
+        },
         "compile": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -930,7 +944,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.4": {
+      "Openchain.Abstractions/0.5.0": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
@@ -955,8 +969,7 @@
           "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-final",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
-          "Openchain.Ledger": "0.4.4",
+          "Openchain.Infrastructure": "0.5.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Globalization": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
@@ -968,11 +981,12 @@
           "System.Text.RegularExpressions": "4.0.11-beta-23516"
         }
       },
-      "Openchain.Ledger/0.4.4": {
+      "Openchain.Infrastructure/0.5.0": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "Openchain.Abstractions": "0.5.0",
           "Portable.BouncyCastle": "1.8.0",
           "System.Dynamic.Runtime": "4.0.11-beta-23516",
           "System.ObjectModel": "4.0.11-beta-23516",
@@ -981,10 +995,10 @@
           "System.Text.RegularExpressions": "4.0.11-beta-23516"
         },
         "compile": {
-          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+          "lib/dotnet5.4/Openchain.Infrastructure.dll": {}
         },
         "runtime": {
-          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+          "lib/dotnet5.4/Openchain.Infrastructure.dll": {}
         }
       },
       "Portable.BouncyCastle/1.8.0": {
@@ -1847,13 +1861,27 @@
       }
     },
     "DNX,Version=v4.5.2": {
-      "Google.Protobuf/3.0.0-alpha4": {
+      "Google.Protobuf/3.0.0-beta2": {
         "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.0",
+          "System.Globalization": "4.0.0",
+          "System.IO": "4.0.0",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.0",
+          "System.ObjectModel": "4.0.0",
+          "System.Reflection": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Runtime.Extensions": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Text.RegularExpressions": "4.0.0"
+        },
         "compile": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -2819,7 +2847,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.4": {
+      "Openchain.Abstractions/0.5.0": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -2848,19 +2876,19 @@
           "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-final",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
-          "Openchain.Ledger": "0.4.4",
+          "Openchain.Infrastructure": "0.5.0",
           "System.Net.Http": "4.0.1-beta-23516"
         },
         "frameworkAssemblies": [
           "System.Numerics"
         ]
       },
-      "Openchain.Ledger/0.4.4": {
+      "Openchain.Infrastructure/0.5.0": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "Openchain.Abstractions": "0.5.0",
           "Portable.BouncyCastle": "1.8.0"
         },
         "frameworkAssemblies": [
@@ -2872,10 +2900,10 @@
           "System.Numerics"
         ],
         "compile": {
-          "lib/net451/Openchain.Ledger.dll": {}
+          "lib/net451/Openchain.Infrastructure.dll": {}
         },
         "runtime": {
-          "lib/net451/Openchain.Ledger.dll": {}
+          "lib/net451/Openchain.Infrastructure.dll": {}
         }
       },
       "Portable.BouncyCastle/1.8.0": {
@@ -2896,6 +2924,24 @@
           "lib/net40/protobuf-net.dll": {}
         }
       },
+      "System.Collections/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Diagnostics.Debug/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Diagnostics.DiagnosticSource/4.0.0-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -2911,6 +2957,42 @@
         }
       },
       "System.Diagnostics.Tracing/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Globalization/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.IO/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Linq/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Linq.Expressions/4.0.0": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -2940,7 +3022,52 @@
           "lib/portable-net45+win8/System.Numerics.Vectors.dll": {}
         }
       },
+      "System.ObjectModel/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Reflection/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Runtime/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Runtime.Extensions/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Text.Encoding/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Text.RegularExpressions/4.0.0": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -2960,13 +3087,27 @@
       }
     },
     "DNXCore,Version=v5.0/win7-x86": {
-      "Google.Protobuf/3.0.0-alpha4": {
+      "Google.Protobuf/3.0.0-beta2": {
         "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.0",
+          "System.Globalization": "4.0.0",
+          "System.IO": "4.0.0",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.0",
+          "System.ObjectModel": "4.0.0",
+          "System.Reflection": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Runtime.Extensions": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Text.RegularExpressions": "4.0.0"
+        },
         "compile": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -3890,7 +4031,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.4": {
+      "Openchain.Abstractions/0.5.0": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
@@ -3915,8 +4056,7 @@
           "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-final",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
-          "Openchain.Ledger": "0.4.4",
+          "Openchain.Infrastructure": "0.5.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Globalization": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
@@ -3928,11 +4068,12 @@
           "System.Text.RegularExpressions": "4.0.11-beta-23516"
         }
       },
-      "Openchain.Ledger/0.4.4": {
+      "Openchain.Infrastructure/0.5.0": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "Openchain.Abstractions": "0.5.0",
           "Portable.BouncyCastle": "1.8.0",
           "System.Dynamic.Runtime": "4.0.11-beta-23516",
           "System.ObjectModel": "4.0.11-beta-23516",
@@ -3941,10 +4082,10 @@
           "System.Text.RegularExpressions": "4.0.11-beta-23516"
         },
         "compile": {
-          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+          "lib/dotnet5.4/Openchain.Infrastructure.dll": {}
         },
         "runtime": {
-          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+          "lib/dotnet5.4/Openchain.Infrastructure.dll": {}
         }
       },
       "Portable.BouncyCastle/1.8.0": {
@@ -5245,13 +5386,27 @@
       }
     },
     "DNXCore,Version=v5.0/win7-x64": {
-      "Google.Protobuf/3.0.0-alpha4": {
+      "Google.Protobuf/3.0.0-beta2": {
         "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.0",
+          "System.Globalization": "4.0.0",
+          "System.IO": "4.0.0",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.0",
+          "System.ObjectModel": "4.0.0",
+          "System.Reflection": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Runtime.Extensions": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Text.RegularExpressions": "4.0.0"
+        },
         "compile": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -6175,7 +6330,7 @@
           "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.4": {
+      "Openchain.Abstractions/0.5.0": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4",
@@ -6200,8 +6355,7 @@
           "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-final",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
-          "Openchain.Ledger": "0.4.4",
+          "Openchain.Infrastructure": "0.5.0",
           "System.Collections": "4.0.11-beta-23516",
           "System.Globalization": "4.0.11-beta-23516",
           "System.Linq": "4.0.1-beta-23516",
@@ -6213,11 +6367,12 @@
           "System.Text.RegularExpressions": "4.0.11-beta-23516"
         }
       },
-      "Openchain.Ledger/0.4.4": {
+      "Openchain.Infrastructure/0.5.0": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "Openchain.Abstractions": "0.5.0",
           "Portable.BouncyCastle": "1.8.0",
           "System.Dynamic.Runtime": "4.0.11-beta-23516",
           "System.ObjectModel": "4.0.11-beta-23516",
@@ -6226,10 +6381,10 @@
           "System.Text.RegularExpressions": "4.0.11-beta-23516"
         },
         "compile": {
-          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+          "lib/dotnet5.4/Openchain.Infrastructure.dll": {}
         },
         "runtime": {
-          "lib/dotnet5.4/Openchain.Ledger.dll": {}
+          "lib/dotnet5.4/Openchain.Infrastructure.dll": {}
         }
       },
       "Portable.BouncyCastle/1.8.0": {
@@ -7530,13 +7685,27 @@
       }
     },
     "DNX,Version=v4.5.2/win7-x86": {
-      "Google.Protobuf/3.0.0-alpha4": {
+      "Google.Protobuf/3.0.0-beta2": {
         "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.0",
+          "System.Globalization": "4.0.0",
+          "System.IO": "4.0.0",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.0",
+          "System.ObjectModel": "4.0.0",
+          "System.Reflection": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Runtime.Extensions": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Text.RegularExpressions": "4.0.0"
+        },
         "compile": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -8505,7 +8674,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.4": {
+      "Openchain.Abstractions/0.5.0": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -8534,19 +8703,19 @@
           "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-final",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
-          "Openchain.Ledger": "0.4.4",
+          "Openchain.Infrastructure": "0.5.0",
           "System.Net.Http": "4.0.1-beta-23516"
         },
         "frameworkAssemblies": [
           "System.Numerics"
         ]
       },
-      "Openchain.Ledger/0.4.4": {
+      "Openchain.Infrastructure/0.5.0": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "Openchain.Abstractions": "0.5.0",
           "Portable.BouncyCastle": "1.8.0"
         },
         "frameworkAssemblies": [
@@ -8558,10 +8727,10 @@
           "System.Numerics"
         ],
         "compile": {
-          "lib/net451/Openchain.Ledger.dll": {}
+          "lib/net451/Openchain.Infrastructure.dll": {}
         },
         "runtime": {
-          "lib/net451/Openchain.Ledger.dll": {}
+          "lib/net451/Openchain.Infrastructure.dll": {}
         }
       },
       "Portable.BouncyCastle/1.8.0": {
@@ -8588,6 +8757,24 @@
           "ref/dotnet/_._": {}
         }
       },
+      "System.Collections/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Diagnostics.Debug/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Diagnostics.DiagnosticSource/4.0.0-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -8603,6 +8790,42 @@
         }
       },
       "System.Diagnostics.Tracing/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Globalization/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.IO/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Linq/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Linq.Expressions/4.0.0": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -8632,7 +8855,52 @@
           "lib/portable-net45+win8/System.Numerics.Vectors.dll": {}
         }
       },
+      "System.ObjectModel/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Reflection/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Runtime/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Runtime.Extensions/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Text.Encoding/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Text.RegularExpressions/4.0.0": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -8652,13 +8920,27 @@
       }
     },
     "DNX,Version=v4.5.2/win7-x64": {
-      "Google.Protobuf/3.0.0-alpha4": {
+      "Google.Protobuf/3.0.0-beta2": {
         "type": "package",
+        "dependencies": {
+          "System.Collections": "4.0.0",
+          "System.Diagnostics.Debug": "4.0.0",
+          "System.Globalization": "4.0.0",
+          "System.IO": "4.0.0",
+          "System.Linq": "4.0.0",
+          "System.Linq.Expressions": "4.0.0",
+          "System.ObjectModel": "4.0.0",
+          "System.Reflection": "4.0.0",
+          "System.Runtime": "4.0.0",
+          "System.Runtime.Extensions": "4.0.0",
+          "System.Text.Encoding": "4.0.0",
+          "System.Text.RegularExpressions": "4.0.0"
+        },
         "compile": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll": {}
+          "lib/dotnet/Google.Protobuf.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -9627,7 +9909,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Openchain.Abstractions/0.4.4": {
+      "Openchain.Abstractions/0.5.0": {
         "type": "package",
         "dependencies": {
           "Google.Protobuf": "3.0.0-alpha4"
@@ -9656,19 +9938,19 @@
           "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc1-final",
           "NBitcoin": "2.1.4.6",
           "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
-          "Openchain.Ledger": "0.4.4",
+          "Openchain.Infrastructure": "0.5.0",
           "System.Net.Http": "4.0.1-beta-23516"
         },
         "frameworkAssemblies": [
           "System.Numerics"
         ]
       },
-      "Openchain.Ledger/0.4.4": {
+      "Openchain.Infrastructure/0.5.0": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "7.0.1",
-          "Openchain.Abstractions": "0.4.4",
+          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0-rc1-final",
+          "Openchain.Abstractions": "0.5.0",
           "Portable.BouncyCastle": "1.8.0"
         },
         "frameworkAssemblies": [
@@ -9680,10 +9962,10 @@
           "System.Numerics"
         ],
         "compile": {
-          "lib/net451/Openchain.Ledger.dll": {}
+          "lib/net451/Openchain.Infrastructure.dll": {}
         },
         "runtime": {
-          "lib/net451/Openchain.Ledger.dll": {}
+          "lib/net451/Openchain.Infrastructure.dll": {}
         }
       },
       "Portable.BouncyCastle/1.8.0": {
@@ -9710,6 +9992,24 @@
           "ref/dotnet/_._": {}
         }
       },
+      "System.Collections/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Diagnostics.Debug/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Diagnostics.DiagnosticSource/4.0.0-beta-23516": {
         "type": "package",
         "dependencies": {
@@ -9725,6 +10025,42 @@
         }
       },
       "System.Diagnostics.Tracing/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Globalization/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.IO/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Linq/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Linq.Expressions/4.0.0": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -9754,7 +10090,52 @@
           "lib/portable-net45+win8/System.Numerics.Vectors.dll": {}
         }
       },
+      "System.ObjectModel/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Reflection/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
       "System.Runtime/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Runtime.Extensions/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Text.Encoding/4.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/net45/_._": {}
+        },
+        "runtime": {
+          "lib/net45/_._": {}
+        }
+      },
+      "System.Text.RegularExpressions/4.0.0": {
         "type": "package",
         "compile": {
           "ref/net45/_._": {}
@@ -9779,13 +10160,15 @@
       "type": "project",
       "path": "../Openchain.BitcoinGateway/project.json"
     },
-    "Google.Protobuf/3.0.0-alpha4": {
+    "Google.Protobuf/3.0.0-beta2": {
       "type": "package",
-      "sha512": "BUkc9hdOHfpSpB3WG69CwXJtT+GqLFAJpNWwW0eC29e1Y883EhugEm3kT+6rLJO2VJHT4poR9EqyA0XunuP3FA==",
+      "sha512": "4CqYhQ0pc+B+Cowfq07u9nuHk1nt06fCKltCi4Lq5YDduZUQXNpmGKVfJC5WapJFGeWvMzHnutEm19DeOYJwOw==",
       "files": [
-        "Google.Protobuf.3.0.0-alpha4.nupkg",
-        "Google.Protobuf.3.0.0-alpha4.nupkg.sha512",
+        "Google.Protobuf.3.0.0-beta2.nupkg",
+        "Google.Protobuf.3.0.0-beta2.nupkg.sha512",
         "Google.Protobuf.nuspec",
+        "lib/dotnet/Google.Protobuf.dll",
+        "lib/dotnet/Google.Protobuf.xml",
         "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.dll",
         "lib/portable-net45+netcore45+wpa81+wp8/Google.Protobuf.xml",
         "tools/google/protobuf/any.proto",
@@ -10694,30 +11077,30 @@
         "tools/install.ps1"
       ]
     },
-    "Openchain.Abstractions/0.4.4": {
+    "Openchain.Abstractions/0.5.0": {
       "type": "package",
-      "sha512": "xoxkEEVMIcVbgZocHRinguYjruMcSFDHan/HT2Ejzgv9DcB+EQ/J5v0jAwsVd6Qa4b0uEg1N91SnunzEaBUGtA==",
+      "sha512": "AUJEaqhYLjH1ye9pPdeDjNCh1QGgnHwe57VTNqw0ToG2vuzVTRE70XyRufB5vGKWsluaUYKJwefgip3YQlTK2g==",
       "files": [
         "lib/dotnet5.4/Openchain.Abstractions.dll",
         "lib/dotnet5.4/Openchain.Abstractions.xml",
         "lib/net451/Openchain.Abstractions.dll",
         "lib/net451/Openchain.Abstractions.xml",
-        "Openchain.Abstractions.0.4.4.nupkg",
-        "Openchain.Abstractions.0.4.4.nupkg.sha512",
+        "Openchain.Abstractions.0.5.0.nupkg",
+        "Openchain.Abstractions.0.5.0.nupkg.sha512",
         "Openchain.Abstractions.nuspec"
       ]
     },
-    "Openchain.Ledger/0.4.4": {
+    "Openchain.Infrastructure/0.5.0": {
       "type": "package",
-      "sha512": "+77yUA4TwdFfCHC4028weavzSDJqdVQkrGSVxTP8zYujiF7SRgEAyWRvN1JMfz6a23OaIbiznvhExNs+wFLAPQ==",
+      "sha512": "/TLOx7bBUsrVMmfmLtBYs6UMuekN78xIcXXnFUeOMR87MA/iP27di6foSlh03Y8x5hRsA70qItfWLr3hpv74WQ==",
       "files": [
-        "lib/dotnet5.4/Openchain.Ledger.dll",
-        "lib/dotnet5.4/Openchain.Ledger.xml",
-        "lib/net451/Openchain.Ledger.dll",
-        "lib/net451/Openchain.Ledger.xml",
-        "Openchain.Ledger.0.4.4.nupkg",
-        "Openchain.Ledger.0.4.4.nupkg.sha512",
-        "Openchain.Ledger.nuspec"
+        "lib/dotnet5.4/Openchain.Infrastructure.dll",
+        "lib/dotnet5.4/Openchain.Infrastructure.xml",
+        "lib/net451/Openchain.Infrastructure.dll",
+        "lib/net451/Openchain.Infrastructure.xml",
+        "Openchain.Infrastructure.0.5.0.nupkg",
+        "Openchain.Infrastructure.0.5.0.nupkg.sha512",
+        "Openchain.Infrastructure.nuspec"
       ]
     },
     "Portable.BouncyCastle/1.8.0": {
@@ -11067,6 +11450,54 @@
         "System.AppContext.4.0.0.nupkg",
         "System.AppContext.4.0.0.nupkg.sha512",
         "System.AppContext.nuspec"
+      ]
+    },
+    "System.Collections/4.0.0": {
+      "type": "package",
+      "sha512": "i2vsGDIEbWdHcUSNDPKZP/ZWod6o740el7mGTCy0dqbCxQh74W4QoC+klUwPEtGEFuvzJ7bJgvwJqscosVNyZQ==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.Collections.xml",
+        "ref/dotnet/es/System.Collections.xml",
+        "ref/dotnet/fr/System.Collections.xml",
+        "ref/dotnet/it/System.Collections.xml",
+        "ref/dotnet/ja/System.Collections.xml",
+        "ref/dotnet/ko/System.Collections.xml",
+        "ref/dotnet/ru/System.Collections.xml",
+        "ref/dotnet/System.Collections.dll",
+        "ref/dotnet/System.Collections.xml",
+        "ref/dotnet/zh-hans/System.Collections.xml",
+        "ref/dotnet/zh-hant/System.Collections.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.Collections.xml",
+        "ref/netcore50/es/System.Collections.xml",
+        "ref/netcore50/fr/System.Collections.xml",
+        "ref/netcore50/it/System.Collections.xml",
+        "ref/netcore50/ja/System.Collections.xml",
+        "ref/netcore50/ko/System.Collections.xml",
+        "ref/netcore50/ru/System.Collections.xml",
+        "ref/netcore50/System.Collections.dll",
+        "ref/netcore50/System.Collections.xml",
+        "ref/netcore50/zh-hans/System.Collections.xml",
+        "ref/netcore50/zh-hant/System.Collections.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Collections.4.0.0.nupkg",
+        "System.Collections.4.0.0.nupkg.sha512",
+        "System.Collections.nuspec"
       ]
     },
     "System.Collections/4.0.11-beta-23516": {
@@ -11492,6 +11923,54 @@
         "System.Diagnostics.Contracts.nuspec"
       ]
     },
+    "System.Diagnostics.Debug/4.0.0": {
+      "type": "package",
+      "sha512": "AYJsLLGDVTC/nyURjgAo7Lpye0+HuSkcQujUf+NgQVdC/C/ky5NyamQHCforHJzgqspitMMtBe8B4UBdGXy1zQ==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.Diagnostics.Debug.xml",
+        "ref/dotnet/es/System.Diagnostics.Debug.xml",
+        "ref/dotnet/fr/System.Diagnostics.Debug.xml",
+        "ref/dotnet/it/System.Diagnostics.Debug.xml",
+        "ref/dotnet/ja/System.Diagnostics.Debug.xml",
+        "ref/dotnet/ko/System.Diagnostics.Debug.xml",
+        "ref/dotnet/ru/System.Diagnostics.Debug.xml",
+        "ref/dotnet/System.Diagnostics.Debug.dll",
+        "ref/dotnet/System.Diagnostics.Debug.xml",
+        "ref/dotnet/zh-hans/System.Diagnostics.Debug.xml",
+        "ref/dotnet/zh-hant/System.Diagnostics.Debug.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.Diagnostics.Debug.xml",
+        "ref/netcore50/es/System.Diagnostics.Debug.xml",
+        "ref/netcore50/fr/System.Diagnostics.Debug.xml",
+        "ref/netcore50/it/System.Diagnostics.Debug.xml",
+        "ref/netcore50/ja/System.Diagnostics.Debug.xml",
+        "ref/netcore50/ko/System.Diagnostics.Debug.xml",
+        "ref/netcore50/ru/System.Diagnostics.Debug.xml",
+        "ref/netcore50/System.Diagnostics.Debug.dll",
+        "ref/netcore50/System.Diagnostics.Debug.xml",
+        "ref/netcore50/zh-hans/System.Diagnostics.Debug.xml",
+        "ref/netcore50/zh-hant/System.Diagnostics.Debug.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Diagnostics.Debug.4.0.0.nupkg",
+        "System.Diagnostics.Debug.4.0.0.nupkg.sha512",
+        "System.Diagnostics.Debug.nuspec"
+      ]
+    },
     "System.Diagnostics.Debug/4.0.11-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -11854,6 +12333,54 @@
         "System.Dynamic.Runtime.nuspec"
       ]
     },
+    "System.Globalization/4.0.0": {
+      "type": "package",
+      "sha512": "IBJyTo1y7ZtzzoJUA60T1XPvNTyw/wfFmjFoBFtlYfkekIOtD/AzDDIg0YdUa7eNtFEfliED2R7HdppTdU4t5A==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.Globalization.xml",
+        "ref/dotnet/es/System.Globalization.xml",
+        "ref/dotnet/fr/System.Globalization.xml",
+        "ref/dotnet/it/System.Globalization.xml",
+        "ref/dotnet/ja/System.Globalization.xml",
+        "ref/dotnet/ko/System.Globalization.xml",
+        "ref/dotnet/ru/System.Globalization.xml",
+        "ref/dotnet/System.Globalization.dll",
+        "ref/dotnet/System.Globalization.xml",
+        "ref/dotnet/zh-hans/System.Globalization.xml",
+        "ref/dotnet/zh-hant/System.Globalization.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.Globalization.xml",
+        "ref/netcore50/es/System.Globalization.xml",
+        "ref/netcore50/fr/System.Globalization.xml",
+        "ref/netcore50/it/System.Globalization.xml",
+        "ref/netcore50/ja/System.Globalization.xml",
+        "ref/netcore50/ko/System.Globalization.xml",
+        "ref/netcore50/ru/System.Globalization.xml",
+        "ref/netcore50/System.Globalization.dll",
+        "ref/netcore50/System.Globalization.xml",
+        "ref/netcore50/zh-hans/System.Globalization.xml",
+        "ref/netcore50/zh-hant/System.Globalization.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Globalization.4.0.0.nupkg",
+        "System.Globalization.4.0.0.nupkg.sha512",
+        "System.Globalization.nuspec"
+      ]
+    },
     "System.Globalization/4.0.11-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -11979,6 +12506,54 @@
         "System.Globalization.Extensions.4.0.1-beta-23516.nupkg",
         "System.Globalization.Extensions.4.0.1-beta-23516.nupkg.sha512",
         "System.Globalization.Extensions.nuspec"
+      ]
+    },
+    "System.IO/4.0.0": {
+      "type": "package",
+      "sha512": "MoCHQ0u5n0OMwUS8OX4Gl48qKiQziSW5cXvt82d+MmAcsLq9OL90+ihnu/aJ1h6OOYcBswrZAEuApfZha9w2lg==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.IO.xml",
+        "ref/dotnet/es/System.IO.xml",
+        "ref/dotnet/fr/System.IO.xml",
+        "ref/dotnet/it/System.IO.xml",
+        "ref/dotnet/ja/System.IO.xml",
+        "ref/dotnet/ko/System.IO.xml",
+        "ref/dotnet/ru/System.IO.xml",
+        "ref/dotnet/System.IO.dll",
+        "ref/dotnet/System.IO.xml",
+        "ref/dotnet/zh-hans/System.IO.xml",
+        "ref/dotnet/zh-hant/System.IO.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.IO.xml",
+        "ref/netcore50/es/System.IO.xml",
+        "ref/netcore50/fr/System.IO.xml",
+        "ref/netcore50/it/System.IO.xml",
+        "ref/netcore50/ja/System.IO.xml",
+        "ref/netcore50/ko/System.IO.xml",
+        "ref/netcore50/ru/System.IO.xml",
+        "ref/netcore50/System.IO.dll",
+        "ref/netcore50/System.IO.xml",
+        "ref/netcore50/zh-hans/System.IO.xml",
+        "ref/netcore50/zh-hant/System.IO.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.IO.4.0.0.nupkg",
+        "System.IO.4.0.0.nupkg.sha512",
+        "System.IO.nuspec"
       ]
     },
     "System.IO/4.0.11-beta-23516": {
@@ -12179,6 +12754,39 @@
         "System.IO.FileSystem.Watcher.nuspec"
       ]
     },
+    "System.Linq/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "r6Hlc+ytE6m/9UBr+nNRRdoJEWjoeQiT3L3lXYFDHoXk3VYsRBCDNXrawcexw7KPLaH0zamQLiAb6avhZ50cGg==",
+      "files": [
+        "lib/dotnet/System.Linq.dll",
+        "lib/net45/_._",
+        "lib/netcore50/System.Linq.dll",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "ref/dotnet/de/System.Linq.xml",
+        "ref/dotnet/es/System.Linq.xml",
+        "ref/dotnet/fr/System.Linq.xml",
+        "ref/dotnet/it/System.Linq.xml",
+        "ref/dotnet/ja/System.Linq.xml",
+        "ref/dotnet/ko/System.Linq.xml",
+        "ref/dotnet/ru/System.Linq.xml",
+        "ref/dotnet/System.Linq.dll",
+        "ref/dotnet/System.Linq.xml",
+        "ref/dotnet/zh-hans/System.Linq.xml",
+        "ref/dotnet/zh-hant/System.Linq.xml",
+        "ref/net45/_._",
+        "ref/netcore50/System.Linq.dll",
+        "ref/netcore50/System.Linq.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "System.Linq.4.0.0.nupkg",
+        "System.Linq.4.0.0.nupkg.sha512",
+        "System.Linq.nuspec"
+      ]
+    },
     "System.Linq/4.0.1-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -12219,6 +12827,54 @@
         "System.Linq.4.0.1-beta-23516.nupkg",
         "System.Linq.4.0.1-beta-23516.nupkg.sha512",
         "System.Linq.nuspec"
+      ]
+    },
+    "System.Linq.Expressions/4.0.0": {
+      "type": "package",
+      "sha512": "wlfVllrKi+evu4Hi8yoJP1dSOVXbvsy7Hs1+oz4Cykfdf6MQTPlD3LI4WKWhprn8FpU5MS3spPSbcMX5sAoJSw==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.Linq.Expressions.xml",
+        "ref/dotnet/es/System.Linq.Expressions.xml",
+        "ref/dotnet/fr/System.Linq.Expressions.xml",
+        "ref/dotnet/it/System.Linq.Expressions.xml",
+        "ref/dotnet/ja/System.Linq.Expressions.xml",
+        "ref/dotnet/ko/System.Linq.Expressions.xml",
+        "ref/dotnet/ru/System.Linq.Expressions.xml",
+        "ref/dotnet/System.Linq.Expressions.dll",
+        "ref/dotnet/System.Linq.Expressions.xml",
+        "ref/dotnet/zh-hans/System.Linq.Expressions.xml",
+        "ref/dotnet/zh-hant/System.Linq.Expressions.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.Linq.Expressions.xml",
+        "ref/netcore50/es/System.Linq.Expressions.xml",
+        "ref/netcore50/fr/System.Linq.Expressions.xml",
+        "ref/netcore50/it/System.Linq.Expressions.xml",
+        "ref/netcore50/ja/System.Linq.Expressions.xml",
+        "ref/netcore50/ko/System.Linq.Expressions.xml",
+        "ref/netcore50/ru/System.Linq.Expressions.xml",
+        "ref/netcore50/System.Linq.Expressions.dll",
+        "ref/netcore50/System.Linq.Expressions.xml",
+        "ref/netcore50/zh-hans/System.Linq.Expressions.xml",
+        "ref/netcore50/zh-hant/System.Linq.Expressions.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Linq.Expressions.4.0.0.nupkg",
+        "System.Linq.Expressions.4.0.0.nupkg.sha512",
+        "System.Linq.Expressions.nuspec"
       ]
     },
     "System.Linq.Expressions/4.0.11-beta-23516": {
@@ -12448,6 +13104,54 @@
         "System.Numerics.Vectors.nuspec"
       ]
     },
+    "System.ObjectModel/4.0.0": {
+      "type": "package",
+      "sha512": "+3j/n+5SlF7PKb0/s5kdord+5RyW3uUscB+0WPuYvfAvEgyx6yPdPXU9tXdDZImRohMuWnQTAG2rFojFPfoGbA==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.ObjectModel.xml",
+        "ref/dotnet/es/System.ObjectModel.xml",
+        "ref/dotnet/fr/System.ObjectModel.xml",
+        "ref/dotnet/it/System.ObjectModel.xml",
+        "ref/dotnet/ja/System.ObjectModel.xml",
+        "ref/dotnet/ko/System.ObjectModel.xml",
+        "ref/dotnet/ru/System.ObjectModel.xml",
+        "ref/dotnet/System.ObjectModel.dll",
+        "ref/dotnet/System.ObjectModel.xml",
+        "ref/dotnet/zh-hans/System.ObjectModel.xml",
+        "ref/dotnet/zh-hant/System.ObjectModel.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.ObjectModel.xml",
+        "ref/netcore50/es/System.ObjectModel.xml",
+        "ref/netcore50/fr/System.ObjectModel.xml",
+        "ref/netcore50/it/System.ObjectModel.xml",
+        "ref/netcore50/ja/System.ObjectModel.xml",
+        "ref/netcore50/ko/System.ObjectModel.xml",
+        "ref/netcore50/ru/System.ObjectModel.xml",
+        "ref/netcore50/System.ObjectModel.dll",
+        "ref/netcore50/System.ObjectModel.xml",
+        "ref/netcore50/zh-hans/System.ObjectModel.xml",
+        "ref/netcore50/zh-hant/System.ObjectModel.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.ObjectModel.4.0.0.nupkg",
+        "System.ObjectModel.4.0.0.nupkg.sha512",
+        "System.ObjectModel.nuspec"
+      ]
+    },
     "System.ObjectModel/4.0.11-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -12533,6 +13237,54 @@
         "System.Private.Uri.4.0.1-beta-23516.nupkg",
         "System.Private.Uri.4.0.1-beta-23516.nupkg.sha512",
         "System.Private.Uri.nuspec"
+      ]
+    },
+    "System.Reflection/4.0.0": {
+      "type": "package",
+      "sha512": "g96Rn8XuG7y4VfxPj/jnXroRJdQ8L3iN3k3zqsuzk4k3Nq4KMXARYiIO4BLW4GwX06uQpuYwRMcAC/aF117knQ==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.Reflection.xml",
+        "ref/dotnet/es/System.Reflection.xml",
+        "ref/dotnet/fr/System.Reflection.xml",
+        "ref/dotnet/it/System.Reflection.xml",
+        "ref/dotnet/ja/System.Reflection.xml",
+        "ref/dotnet/ko/System.Reflection.xml",
+        "ref/dotnet/ru/System.Reflection.xml",
+        "ref/dotnet/System.Reflection.dll",
+        "ref/dotnet/System.Reflection.xml",
+        "ref/dotnet/zh-hans/System.Reflection.xml",
+        "ref/dotnet/zh-hant/System.Reflection.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.Reflection.xml",
+        "ref/netcore50/es/System.Reflection.xml",
+        "ref/netcore50/fr/System.Reflection.xml",
+        "ref/netcore50/it/System.Reflection.xml",
+        "ref/netcore50/ja/System.Reflection.xml",
+        "ref/netcore50/ko/System.Reflection.xml",
+        "ref/netcore50/ru/System.Reflection.xml",
+        "ref/netcore50/System.Reflection.dll",
+        "ref/netcore50/System.Reflection.xml",
+        "ref/netcore50/zh-hans/System.Reflection.xml",
+        "ref/netcore50/zh-hant/System.Reflection.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Reflection.4.0.0.nupkg",
+        "System.Reflection.4.0.0.nupkg.sha512",
+        "System.Reflection.nuspec"
       ]
     },
     "System.Reflection/4.1.0-beta-23225": {
@@ -12944,6 +13696,54 @@
         "System.Runtime.4.0.21-beta-23516.nupkg",
         "System.Runtime.4.0.21-beta-23516.nupkg.sha512",
         "System.Runtime.nuspec"
+      ]
+    },
+    "System.Runtime.Extensions/4.0.0": {
+      "type": "package",
+      "sha512": "zPzwoJcA7qar/b5Ihhzfcdr3vBOR8FIg7u//Qc5mqyAriasXuMFVraBZ5vOQq5asfun9ryNEL8Z2BOlUK5QRqA==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.Runtime.Extensions.xml",
+        "ref/dotnet/es/System.Runtime.Extensions.xml",
+        "ref/dotnet/fr/System.Runtime.Extensions.xml",
+        "ref/dotnet/it/System.Runtime.Extensions.xml",
+        "ref/dotnet/ja/System.Runtime.Extensions.xml",
+        "ref/dotnet/ko/System.Runtime.Extensions.xml",
+        "ref/dotnet/ru/System.Runtime.Extensions.xml",
+        "ref/dotnet/System.Runtime.Extensions.dll",
+        "ref/dotnet/System.Runtime.Extensions.xml",
+        "ref/dotnet/zh-hans/System.Runtime.Extensions.xml",
+        "ref/dotnet/zh-hant/System.Runtime.Extensions.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.Runtime.Extensions.xml",
+        "ref/netcore50/es/System.Runtime.Extensions.xml",
+        "ref/netcore50/fr/System.Runtime.Extensions.xml",
+        "ref/netcore50/it/System.Runtime.Extensions.xml",
+        "ref/netcore50/ja/System.Runtime.Extensions.xml",
+        "ref/netcore50/ko/System.Runtime.Extensions.xml",
+        "ref/netcore50/ru/System.Runtime.Extensions.xml",
+        "ref/netcore50/System.Runtime.Extensions.dll",
+        "ref/netcore50/System.Runtime.Extensions.xml",
+        "ref/netcore50/zh-hans/System.Runtime.Extensions.xml",
+        "ref/netcore50/zh-hant/System.Runtime.Extensions.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Runtime.Extensions.4.0.0.nupkg",
+        "System.Runtime.Extensions.4.0.0.nupkg.sha512",
+        "System.Runtime.Extensions.nuspec"
       ]
     },
     "System.Runtime.Extensions/4.0.11-beta-23516": {
@@ -13393,6 +14193,54 @@
         "System.Security.Principal.Windows.nuspec"
       ]
     },
+    "System.Text.Encoding/4.0.0": {
+      "type": "package",
+      "sha512": "AMxFNOXpA6Ab8swULbXuJmoT2K5w6TnV3ObF5wsmEcIHQUJghoZtDVfVHb08O2wW15mOSI1i9Wg0Dx0pY13o8g==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.Text.Encoding.xml",
+        "ref/dotnet/es/System.Text.Encoding.xml",
+        "ref/dotnet/fr/System.Text.Encoding.xml",
+        "ref/dotnet/it/System.Text.Encoding.xml",
+        "ref/dotnet/ja/System.Text.Encoding.xml",
+        "ref/dotnet/ko/System.Text.Encoding.xml",
+        "ref/dotnet/ru/System.Text.Encoding.xml",
+        "ref/dotnet/System.Text.Encoding.dll",
+        "ref/dotnet/System.Text.Encoding.xml",
+        "ref/dotnet/zh-hans/System.Text.Encoding.xml",
+        "ref/dotnet/zh-hant/System.Text.Encoding.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.Text.Encoding.xml",
+        "ref/netcore50/es/System.Text.Encoding.xml",
+        "ref/netcore50/fr/System.Text.Encoding.xml",
+        "ref/netcore50/it/System.Text.Encoding.xml",
+        "ref/netcore50/ja/System.Text.Encoding.xml",
+        "ref/netcore50/ko/System.Text.Encoding.xml",
+        "ref/netcore50/ru/System.Text.Encoding.xml",
+        "ref/netcore50/System.Text.Encoding.dll",
+        "ref/netcore50/System.Text.Encoding.xml",
+        "ref/netcore50/zh-hans/System.Text.Encoding.xml",
+        "ref/netcore50/zh-hant/System.Text.Encoding.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Text.Encoding.4.0.0.nupkg",
+        "System.Text.Encoding.4.0.0.nupkg.sha512",
+        "System.Text.Encoding.nuspec"
+      ]
+    },
     "System.Text.Encoding/4.0.11-beta-23516": {
       "type": "package",
       "serviceable": true,
@@ -13515,6 +14363,54 @@
         "System.Text.Encoding.Extensions.4.0.11-beta-23516.nupkg",
         "System.Text.Encoding.Extensions.4.0.11-beta-23516.nupkg.sha512",
         "System.Text.Encoding.Extensions.nuspec"
+      ]
+    },
+    "System.Text.RegularExpressions/4.0.0": {
+      "type": "package",
+      "sha512": "D2CHm8LBIymJK9+1E3sn4cUEzMd6B+quQUrCGUluv9QFBNOdL3XqNu548QKeNplEXFOmF5aKXMxXbTrjbEUNMw==",
+      "files": [
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net45/_._",
+        "lib/win8/_._",
+        "lib/wp80/_._",
+        "lib/wpa81/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "License.rtf",
+        "ref/dotnet/de/System.Text.RegularExpressions.xml",
+        "ref/dotnet/es/System.Text.RegularExpressions.xml",
+        "ref/dotnet/fr/System.Text.RegularExpressions.xml",
+        "ref/dotnet/it/System.Text.RegularExpressions.xml",
+        "ref/dotnet/ja/System.Text.RegularExpressions.xml",
+        "ref/dotnet/ko/System.Text.RegularExpressions.xml",
+        "ref/dotnet/ru/System.Text.RegularExpressions.xml",
+        "ref/dotnet/System.Text.RegularExpressions.dll",
+        "ref/dotnet/System.Text.RegularExpressions.xml",
+        "ref/dotnet/zh-hans/System.Text.RegularExpressions.xml",
+        "ref/dotnet/zh-hant/System.Text.RegularExpressions.xml",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net45/_._",
+        "ref/netcore50/de/System.Text.RegularExpressions.xml",
+        "ref/netcore50/es/System.Text.RegularExpressions.xml",
+        "ref/netcore50/fr/System.Text.RegularExpressions.xml",
+        "ref/netcore50/it/System.Text.RegularExpressions.xml",
+        "ref/netcore50/ja/System.Text.RegularExpressions.xml",
+        "ref/netcore50/ko/System.Text.RegularExpressions.xml",
+        "ref/netcore50/ru/System.Text.RegularExpressions.xml",
+        "ref/netcore50/System.Text.RegularExpressions.dll",
+        "ref/netcore50/System.Text.RegularExpressions.xml",
+        "ref/netcore50/zh-hans/System.Text.RegularExpressions.xml",
+        "ref/netcore50/zh-hant/System.Text.RegularExpressions.xml",
+        "ref/win8/_._",
+        "ref/wp80/_._",
+        "ref/wpa81/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "System.Text.RegularExpressions.4.0.0.nupkg",
+        "System.Text.RegularExpressions.4.0.0.nupkg.sha512",
+        "System.Text.RegularExpressions.nuspec"
       ]
     },
     "System.Text.RegularExpressions/4.0.11-beta-23516": {

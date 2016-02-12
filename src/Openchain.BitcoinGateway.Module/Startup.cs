@@ -37,7 +37,7 @@ namespace Openchain.BitcoinGateway.Module
 
             // Setup configuration
             services.AddSingleton<IConfiguration>(_ =>
-                new ConfigurationBuilder().SetBasePath(".").AddJsonFile("config.json").Build());
+                new ConfigurationBuilder().SetBasePath(".").AddJsonFile("config.json").AddUserSecrets().Build());
 
             // Setup ASP.NET MVC
             services.AddMvcCore().AddViews();
